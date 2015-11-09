@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+        <style name="GuilfordTheme" parent="Theme.AppCompat.NoActionBar">
+                <!--Guilford Theme-->
+                <item name="colorPrimary">@color/GuilfordPrimary</item>
+                <item name="colorPrimaryDark">@color/GuilfordPrimaryDark</item>
+                <item name="toolbarStyle">@color/GuilfordPrimary</item>
+                <item name="colorAccent">@color/GuilfordPrimary</item>
+                <item name="windowActionBar">false</item>
+                <item name="windowNoTitle">true</item>
+                <item name="android:navigationBarColor">@color/GuilfordPrimary</item>
+        </style>
+
+        <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+                <!-- Customize your theme here. -->
+                <item name="colorPrimary">@color/ColorPrimary</item>
+                <item name="android:toolbarStyle" tools:targetApi="lollipop">@color/ColorPrimary</item>
+                <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
+                <item name="colorAccent">@color/ColorAccent</item>
+                <item name="windowActionBar">false</item>
+                <item name="windowNoTitle">true</item>
+                <item name="android:navigationBarColor">@color/ColorPrimary</item>
+        </style>
+</resources>

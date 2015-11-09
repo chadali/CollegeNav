@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="guilford_academic_administrative_building_names">
+        <item>Alumni House</item>
+        <item>Archdale Hall</item>
+        <item>Bauman Telecommunications Center</item>
+        <item>Bonner Center for Community Learning</item>
+        <item>Community Center</item>
+        <item>Dana Auditorium</item>
+        <item>Duke Memorial Hall</item>
+        <item>Early College Classrooms</item>
+        <item>George White House (ECG)</item>
+        <item>Facilities and Campus Services</item>
+        <item>Founders Hall</item>
+        <item>Frank Family Science Center</item>
+        <item>Friends Center at Guilford</item>
+        <item>Hege Library</item>
+        <item>Hege-Cox Hall</item>
+        <item>Hendricks Hall</item>
+        <item>Hildebrandt</item>
+        <item>J. Donald Cline Observatory</item>
+        <item>King Hall</item>
+        <item>Mail and Print Services</item>
+        <item>Milner Student Health and Counseling Center</item>
+        <item>New Garden Hall</item>
+        <item>Office of the President</item>
+        <item>Ragsdale House</item>
+        <item>The Hut</item>
+    </string-array>
+
+    <string-array name="guilford_academic_administrative_building_descriptions">
+        <item> </item>
+        <item>Archdale Hall contains office space for many of our faculty. More than 120 years old, the building was renovated in 2008 to achieve LEED (Leadership in Energy and Environmental Design) Silver certification.
+Offices: English, History and Philosophy</item>
+        <item>Bauman houses classrooms, computer labs, IT&amp;S and Public Safety.
+\nAccounting, Education Studies, and Computing Technology &amp; Information Systems (CTIS)
+\nAdministration Offices
+\nComputer Labs
+\nInformation Technolgy &amp; Services
+\nPublic Safety
+\nThe Solution Center</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+    </string-array>
+
+    <string-array name="guilford_residential_building_names">
+        <item>Binford Hall</item>
+        <item>Bryan Hall</item>
+        <item>English Hall</item>
+        <item>Mary Hobbs Hall</item>
+        <item>Milner Hall</item>
+        <item>North Apartments</item>
+        <item>Shore Hall</item>
+        <item>South Apartments</item>
+    </string-array>
+
+    <string-array name="guilford_residential_building_descriptions">
+
+        <item></item>
+    </string-array>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ColorPrimary">#03A9F4</color>
+    <color name="ColorPrimaryDark">#0288D1</color>
+    <color name="tabsScrollColor">#303F9F</color>
+    <color name="ColorAccent">#03A9F4</color>
+    <color name="my_spinner_text_color">#808080</color>
+    <color name="GuilfordColor">#800000</color>
+
+    <color name="GuilfordPrimary">#b71c1c</color>
+    <color name="GuilfordPrimaryDark">#800000</color>
+
+</resources>
