@@ -122,6 +122,9 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
     private void setUpGuilfordResidenceInfo() {
         guilfordResidenceLatLng = new ArrayList<LatLng>();
         guilfordResidenceLatLng.add(new LatLng(36.094422, -79.889743)); // Binford Hall
+        guilfordResidenceLatLng.add(new LatLng(36.095318, -79.888509)); // Bryan Hall
+        guilfordResidenceLatLng.add(new LatLng(36.092470, -79.886947)); // English Hall
+
 
 
     }
