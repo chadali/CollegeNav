@@ -61,7 +61,7 @@
         <activity
             android:name=".MapContainerActivity"
             android:label="@string/title_activity_map_container"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -74,8 +74,9 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".PopActivity"
-            android:label="@string/title_activity_pop">
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme" >
         </activity>
     </application>
 
