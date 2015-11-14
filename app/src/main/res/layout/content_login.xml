@@ -10,6 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.vappna.collegenav.LoginActivity">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/ColorPrimary"
+        android:gravity="center"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/white"
         android:textColor="@android:color/white"
         android:textSize="16dp" />
 
@@ -50,35 +53,38 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/ColorPrimary"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/white"
         android:textColor="@android:color/white"
         android:textSize="16dp" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/ColorPrimary"
-        android:text="Log In"
         android:layout_marginBottom="32dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="Log In"
         android:textColor="@android:color/white" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
         android:text="Don't have an account?"
         android:textColor="@android:color/white"
-        android:layout_marginBottom="16dp"
         android:textSize="18dp" />
+
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/ColorPrimary"
+        android:background="?android:attr/selectableItemBackground"
         android:text="Register"
         android:textColor="@android:color/white" />
 
