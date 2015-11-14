@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="@drawable/login_in_background"
     android:orientation="vertical"
     android:padding="10dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -14,34 +14,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:paddingTop="100dp"
-        android:text="Welcome!"
-        android:textColor="@android:color/black"
+        android:layout_marginBottom="32dp"
+        android:paddingTop="60dp"
+        android:text="CollegeNav"
+        android:textColor="@android:color/white"
         android:textSize="48dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="50dp"
-        android:text="Login"
-        android:textColor="@android:color/black"
-        android:textSize="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Username"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="16dp" />
 
     <EditText
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/ColorPrimary"
+        android:textColor="@android:color/white"
         android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Password"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/ColorPrimary"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/ColorPrimary"
+        android:text="Log In"
+        android:layout_marginBottom="32dp"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Don't have an account?"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp"
+        android:textSize="18dp" />
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/ColorPrimary"
+        android:text="Register"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>
