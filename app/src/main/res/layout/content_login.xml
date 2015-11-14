@@ -26,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
         android:text="Username"
         android:textColor="@android:color/white"
         android:textSize="16dp" />
@@ -35,16 +36,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_background"
         android:gravity="center"
-        android:background="@android:color/transparent"
-        android:backgroundTint="@android:color/white"
-        android:textColor="@android:color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/ColorPrimaryDark"
         android:textSize="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
         android:text="Password"
         android:textColor="@android:color/white"
         android:textSize="16dp" />
@@ -53,22 +55,27 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:gravity="center"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent"
-        android:backgroundTint="@android:color/white"
-        android:textColor="@android:color/white"
+        android:background="@drawable/edittext_background"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/ColorPrimaryDark"
         android:textSize="16dp" />
 
+    <com.andexert.library.RippleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:rv_color="@color/ColorPrimary"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp">
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp"
-        android:background="?android:attr/selectableItemBackground"
+        android:background="@color/ColorPrimaryDark"
         android:text="Log In"
         android:textColor="@android:color/white" />
+    </com.andexert.library.RippleView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,13 +86,20 @@
         android:textColor="@android:color/white"
         android:textSize="18dp" />
 
+    <com.andexert.library.RippleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:rv_color="@color/ColorPrimary"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp">
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="?android:attr/selectableItemBackground"
+        android:background="@color/ColorPrimaryDark"
         android:text="Register"
         android:textColor="@android:color/white" />
+    </com.andexert.library.RippleView>
 
 </LinearLayout>
