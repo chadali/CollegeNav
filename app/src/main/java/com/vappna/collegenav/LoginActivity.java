@@ -14,6 +14,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button loginButton, registerButton;
     EditText usernameET, passwordET;
+    LocalUser localUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,14 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton = (Button) findViewById(R.id.loginButton);
         registerButton = (Button) findViewById(R.id.registerButton);
+        localUser = new LocalUser(this);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               User user = new User (null,null);
+                localUser.storeUserData(user);
+                localUser.setUserLoggedIn(true);
+
                 Intent intent = new Intent(LoginActivity.this, FindCollegeActivity.class);
                 startActivity(intent);
             }
