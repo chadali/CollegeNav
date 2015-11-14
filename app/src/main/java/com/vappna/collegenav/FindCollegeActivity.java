@@ -67,8 +67,8 @@ public class FindCollegeActivity extends ActionBarActivity {
 
     private void setUpToolbar() {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("Pick A College");
-        toolbar.setBackgroundColor(Color.WHITE);
+        toolbar.setTitle("Select a Home College");
+        toolbar.setBackgroundColor(Color.TRANSPARENT);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
     }

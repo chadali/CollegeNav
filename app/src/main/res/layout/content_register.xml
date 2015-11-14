@@ -7,8 +7,8 @@
     android:background="@drawable/login_in_background"
     android:orientation="vertical"
     android:padding="10dp"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.vappna.collegenav.LoginActivity">
+    tools:context="com.vappna.collegenav.Register"
+    tools:showIn="@layout/activity_register">
 
 
     <TextView
@@ -17,9 +17,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="32dp"
         android:paddingTop="60dp"
-        android:text="CollegeNav"
+        android:text="Register"
         android:textColor="@android:color/white"
-        android:textSize="48dp" />
+        android:textSize="32dp" />
 
 
     <TextView
@@ -64,30 +64,27 @@
         android:textColor="@color/ColorPrimaryDark"
         android:textSize="16dp" />
 
-    <com.andexert.library.RippleView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp"
-        app:rv_color="@color/ColorPrimary">
-
-        <Button
-            android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/ColorPrimaryDark"
-            android:text="Log In"
-            android:textColor="@android:color/white" />
-    </com.andexert.library.RippleView>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:text="Don't have an account?"
+        android:layout_marginBottom="8dp"
+        android:text="Confirm Password"
         android:textColor="@android:color/white"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/confirmedPassword"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/edittext_background"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/ColorPrimaryDark"
+        android:textSize="16dp" />
+
 
     <com.andexert.library.RippleView
         android:layout_width="wrap_content"
@@ -105,5 +102,6 @@
             android:text="Register"
             android:textColor="@android:color/white" />
     </com.andexert.library.RippleView>
+
 
 </LinearLayout>
