@@ -1,5 +1,6 @@
 package com.vappna.collegenav;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -34,7 +35,19 @@ public class Register extends AppCompatActivity {
                     String username = usernameET.getText().toString();
                     String password = passwordET.getText().toString();
                     User user = new User(username, password);
+
+                    registerUser(user);
                 }
+            }
+        });
+    }
+
+    private void registerUser(User user) {
+        ServerRequest serverRequest = new ServerRequest(this);
+        serverRequest.storeUserDataInBackground(user, new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+                startActivity(new Intent(Register.this, LoginActivity.class));
             }
         });
     }

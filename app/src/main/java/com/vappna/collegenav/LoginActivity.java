@@ -1,11 +1,13 @@
 package com.vappna.collegenav;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,8 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_login);
-      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
 
         usernameET = (EditText) findViewById(R.id.username);
         passwordET = (EditText) findViewById(R.id.password);
@@ -32,12 +32,11 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               User user = new User (null,null);
-                localUser.storeUserData(user);
-                localUser.setUserLoggedIn(true);
+                String username = usernameET.getText().toString();
+                String password = passwordET.getText().toString();
 
-                Intent intent = new Intent(LoginActivity.this, FindCollegeActivity.class);
-                startActivity(intent);
+                User user = new User(username, password);
+                authenticate(user);
             }
         });
 
@@ -51,4 +50,35 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void authenticate(User user) {
+        ServerRequest serverRequest = new ServerRequest(this);
+        serverRequest.fetchUserDataInBackground(user, new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+                if (returnedUser == null) {
+                    showErrorMessage();
+                    Log.e("Error", "Incorrect Login");
+
+                } else {
+                    loginUser(returnedUser);
+                    Log.e("Success", "Successful Login");
+
+                }
+            }
+        });
+    }
+
+    private void showErrorMessage() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(LoginActivity.this);
+        dialogBuilder.setMessage("Incorrect Login Details");
+        dialogBuilder.setPositiveButton("Ok", null);
+        dialogBuilder.show();
+    }
+
+    private void loginUser(User returnedUser){
+        localUser.storeUserData(returnedUser);
+        localUser.setUserLoggedIn(true);
+        Intent intent = new Intent(LoginActivity.this, FindCollegeActivity.class);
+        startActivity(intent);
+    }
 }
