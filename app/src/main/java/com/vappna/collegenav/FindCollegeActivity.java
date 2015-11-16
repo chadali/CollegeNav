@@ -146,4 +146,11 @@ public class FindCollegeActivity extends ActionBarActivity {
         overridePendingTransition(android.R.anim.fade_out, android.R.anim.fade_out);
     }
 
+    @Override
+    public void onBackPressed() {
+         LocalUser user = new LocalUser(this);
+        user.clearUserData();
+        super.onBackPressed();
+
+    }
 }

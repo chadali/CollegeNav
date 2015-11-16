@@ -125,8 +125,7 @@ public class ServerRequest {
                 HttpEntity entity = httpResponse.getEntity();
                 result = EntityUtils.toString(entity);
                 Log.e("Result", result);
-                 JSONObject jsonObject = new JSONObject(result);
-
+                JSONObject jsonObject = new JSONObject(result);
 
                 if(jsonObject.length() != 0){
                     Log.e("JSON output", jsonObject.toString());
