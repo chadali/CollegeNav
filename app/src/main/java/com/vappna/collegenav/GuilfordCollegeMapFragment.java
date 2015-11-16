@@ -117,6 +117,25 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
 
     private void setUpGuilfordSportsInfo() {
         guilfordAthleticLatLng = new ArrayList<LatLng>();
+        guilfordAthleticLatLng.add(new LatLng(36.094027, -79.886371)); // Alumni Gym
+        guilfordAthleticLatLng.add(new LatLng(36.093392, -79.884218)); // Alumni Wedge Range
+        guilfordAthleticLatLng.add(new LatLng(36.091517, -79.886012)); // Armfield Athletic Center
+        guilfordAthleticLatLng.add(new LatLng(36.098294, -79.890389)); // Dorothy Ragsdale McMichael '37 Centennial Class Courts
+        guilfordAthleticLatLng.add(new LatLng(36.092885, -79.885744)); // Edgar H. McBane Field
+        guilfordAthleticLatLng.add(new LatLng(36.098887, -79.887740)); // Guilford Meadows Disc Golf Course
+        guilfordAthleticLatLng.add(new LatLng(36.096946, -79.889774)); // Haworth East/West Field
+        guilfordAthleticLatLng.add(new LatLng(36.097600, -79.890429)); // Haworth Lighted Field
+        guilfordAthleticLatLng.add(new LatLng(36.096490, -79.890904)); // Haworth North/South Field
+        guilfordAthleticLatLng.add(new LatLng(36.097813, -79.889427)); // Haworth Soccer Game Field
+        guilfordAthleticLatLng.add(new LatLng(36.097574, -79.891166)); // Haworth Softball Field
+        guilfordAthleticLatLng.add(new LatLng(36.094094, -79.884226)); // Jack Jensen Golf Center
+        guilfordAthleticLatLng.add(new LatLng(36.094155, -79.885316)); // Mary Ragsdale Fitness Area
+        guilfordAthleticLatLng.add(new LatLng(36.093994, -79.885411)); // Outdoor Basketball Court
+        guilfordAthleticLatLng.add(new LatLng(36.094263, -79.885747)); // PE Center
+        guilfordAthleticLatLng.add(new LatLng(36.094421, -79.885528)); // Ragan-Brown Field House and Physical Education Center
+        guilfordAthleticLatLng.add(new LatLng(36.094096, -79.885050)); // Sand Volleyball Court
+        guilfordAthleticLatLng.add(new LatLng(36.092509, -79.885559)); // Stuart Maynard Batting Center
+        guilfordAthleticLatLng.add(new LatLng(36.100310, -79.886895)); // The Meadows at Guilford College
     }
 
     private void setUpGuilfordResidenceInfo() {
@@ -124,9 +143,11 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
         guilfordResidenceLatLng.add(new LatLng(36.094422, -79.889743)); // Binford Hall
         guilfordResidenceLatLng.add(new LatLng(36.095318, -79.888509)); // Bryan Hall
         guilfordResidenceLatLng.add(new LatLng(36.092470, -79.886947)); // English Hall
-
-
-
+        guilfordResidenceLatLng.add(new LatLng(36.093877, -79.889275)); // Mary Hobbs Hall
+        guilfordResidenceLatLng.add(new LatLng(36.095169, -79.887018)); // Milner Hall
+        guilfordResidenceLatLng.add(new LatLng(36.097621, -79.885893)); // North Apartments
+        guilfordResidenceLatLng.add(new LatLng(36.094310, -79.888993)); // Shore Hall
+        guilfordResidenceLatLng.add(new LatLng(36.096783, -79.886742)); // South Apartments
     }
 
     private void setUpGuilfordAcademicInfo() {
