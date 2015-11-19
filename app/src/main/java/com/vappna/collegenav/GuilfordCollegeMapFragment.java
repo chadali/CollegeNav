@@ -55,9 +55,9 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
     String[] guilfordAcademicDescriptionArray, guilfordAthleticDescriptionArray, guilfordResidenceDescriptionArray;
     List<String> guilfordAcademicDescription, guilfordAthleticDescription, guilfordResidenceDescription;
 
-    ArrayList<Marker> guilfordAcademicMarkerArray, guilfordResidenceMarkerArray, guilfordSportsMarkerArray;
+    ArrayList<Marker> guilfordAcademicMarkerArray, guilfordResidenceMarkerArray, guilfordAthleticMarkerArray;
 
-    Marker guilfordAcademicMarker, guilfordResidenceMarker;
+    Marker guilfordAcademicMarker, guilfordResidenceMarker, guilfordAthleticMarker;
     MapContainerActivity MCA;
 
     Context cxt;
@@ -208,6 +208,17 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
 
             guilfordResidenceMarkerArray.add(guilfordResidenceMarker);
         }
+
+//        for (int i = 0; i < guilfordAthleticLatLng.size(); i++) {
+//            guilfordAthleticMarker = guilfordMap.addMarker(new MarkerOptions()
+//                            .position(guilfordAthleticLatLng.get(i))
+//                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.sports))
+//                            .title(guilfordAthleticTitles.get(i))
+//            );
+//
+//            guilfordAthleticMarkerArray.add(guilfordAthleticMarker);
+//        }
+
         guilfordMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
             @Override
@@ -274,8 +285,21 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
                 guilfordMarker.setVisible(false);
             }
         }
-        if (markerName.equals("residentialMarker")) {
+        if (markerName.equals("residenceMarker")) {
             for (final Marker guilfordMarker : guilfordResidenceMarkerArray) {
+                ani1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        guilfordMarker.setAlpha((float) animation.getAnimatedValue());
+                    }
+                });
+                ani1.start();
+                guilfordMarker.setVisible(false);
+            }
+        }
+
+        if (markerName.equals("athleticMarker")) {
+            for (final Marker guilfordMarker : guilfordAthleticMarkerArray) {
                 ani1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
@@ -303,8 +327,20 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
                 guilfordMarker.setVisible(true);
             }
         }
-        if (markerName.equals("residentialMarker")) {
+        if (markerName.equals("residenceMarker")) {
             for (final Marker guilfordMarker : guilfordResidenceMarkerArray) {
+                ani2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        guilfordMarker.setAlpha((float) animation.getAnimatedValue());
+                    }
+                });
+                ani2.start();
+                guilfordMarker.setVisible(true);
+            }
+        }
+        if (markerName.equals("AthleticMarker")) {
+            for (final Marker guilfordMarker : guilfordAthleticMarkerArray) {
                 ani2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {

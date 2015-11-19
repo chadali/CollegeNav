@@ -150,6 +150,7 @@ public class MapContainerActivity extends ActionBarActivity {
                 }
             }
         });
+
         isResidenceMarkerVisible = true;
         residenceIconLayout.setOnClickListener(new View.OnClickListener() {
             @Override
