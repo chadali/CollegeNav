@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -163,6 +164,25 @@ public class MapContainerActivity extends ActionBarActivity {
                     gcMapFragment.setMarkerVisibilityTrue("residenceMarker");
                     setButtonAlpha(residenceIcon, residenceIconText, 1.0f);
                     isResidenceMarkerVisible = true;
+                }
+            }
+        });
+
+        isAthleticMarkerVisible = true;
+        athleticIconLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isAthleticMarkerVisible) {
+                    gcMapFragment.setMarkerVisibilityFalse("athleticMarker");
+                    setButtonAlpha(athleticIcon, athleticIconText, 0.4f);
+                    Log.d("test","Turned markers off");
+                    isAthleticMarkerVisible = false;
+                } else if (!isAthleticMarkerVisible) {
+                    gcMapFragment.setMarkerVisibilityTrue("athleticMarker");
+                    Log.d("test","Turn button on");
+                    setButtonAlpha(athleticIcon, athleticIconText, 1.0f);
+                    Log.d("test","Turn marker on");
+                    isAthleticMarkerVisible = true;
                 }
             }
         });

@@ -105,6 +105,12 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
         guilfordResidenceDescriptionArray = getResources().getStringArray(R.array.guilford_residential_building_descriptions);
         guilfordResidenceDescription = Arrays.asList(guilfordResidenceDescriptionArray);
         guilfordResidenceMarkerArray = new ArrayList<Marker>();
+
+        guilfordAthleticTitlesArray = getResources().getStringArray(R.array.guilford_sports_and_recreational_names);
+        guilfordAthleticTitles = Arrays.asList(guilfordAthleticTitlesArray);
+        guilfordAthleticDescriptionArray = getResources().getStringArray(R.array.guilford_residential_building_descriptions);
+        guilfordAthleticDescription = Arrays.asList(guilfordAthleticDescriptionArray);
+        guilfordAthleticMarkerArray = new ArrayList<Marker>();
     }
 
     private void setUpLatLng() {
@@ -201,23 +207,24 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
 
        for (int i = 0; i < guilfordResidenceLatLng.size(); i++) {
             guilfordResidenceMarker = guilfordMap.addMarker(new MarkerOptions()
-                    .position(guilfordResidenceLatLng.get(i))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.residencehall))
-                    .title(guilfordResidenceTitles.get(i))
-                   );
+                            .position(guilfordResidenceLatLng.get(i))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.residencehall))
+                            .title(guilfordResidenceTitles.get(i))
+            );
 
-            guilfordResidenceMarkerArray.add(guilfordResidenceMarker);
+           guilfordResidenceMarkerArray.add(guilfordResidenceMarker);
         }
 
-//        for (int i = 0; i < guilfordAthleticLatLng.size(); i++) {
-//            guilfordAthleticMarker = guilfordMap.addMarker(new MarkerOptions()
-//                            .position(guilfordAthleticLatLng.get(i))
-//                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.sports))
-//                            .title(guilfordAthleticTitles.get(i))
-//            );
-//
-//            guilfordAthleticMarkerArray.add(guilfordAthleticMarker);
-//        }
+        for (int i = 0; i < guilfordAthleticLatLng.size(); i++) {
+            guilfordAthleticMarker = guilfordMap.addMarker(new MarkerOptions()
+                            .position(guilfordAthleticLatLng.get(i))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.sports))
+                            .title(guilfordAthleticTitles.get(i))
+            );
+
+            guilfordAthleticMarkerArray.add(guilfordAthleticMarker);
+        }
+
 
         guilfordMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
@@ -339,7 +346,7 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
                 guilfordMarker.setVisible(true);
             }
         }
-        if (markerName.equals("AthleticMarker")) {
+        if (markerName.equals("athleticMarker")) {
             for (final Marker guilfordMarker : guilfordAthleticMarkerArray) {
                 ani2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
