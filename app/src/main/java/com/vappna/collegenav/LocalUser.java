@@ -20,14 +20,15 @@ public class LocalUser {
         SharedPreferences.Editor spEditor = preferences.edit();
         spEditor.putString("username", user.getUsername());
         spEditor.putString("password", user.getPassword());
+        spEditor.putString("homeCollege", user.getHomeCollege());
         spEditor.commit();
     }
 
     public User getLoggedInUser(){
         String username = preferences.getString("username", "");
         String password = preferences.getString("password", "");
-
-        User storedUser = new User(username, password);
+        String homeCollege = preferences.getString("homeCollege", "");
+        User storedUser = new User(username, password, homeCollege);
 
         return storedUser;
     }
@@ -52,4 +53,5 @@ public class LocalUser {
         spEditor.clear();
         spEditor.commit();
     }
+
 }

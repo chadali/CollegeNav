@@ -5,11 +5,20 @@ package com.vappna.collegenav;
  */
 public class User {
 
-    private String username, password;
+    private String username;
+    private String password;
 
-    public User (String username, String password){
+    private String homeCollege;
+
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(String username, String password, String homeCollege) {
+        this.username = username;
+        this.password = password;
+        this.homeCollege = homeCollege;
     }
 
     public String getUsername() {
@@ -28,5 +37,12 @@ public class User {
         this.password = password;
     }
 
+    public String getHomeCollege() {
+        return homeCollege;
+    }
+
+    public void setHomeCollege(String homeCollege) {
+        this.homeCollege = homeCollege;
+    }
 
 }

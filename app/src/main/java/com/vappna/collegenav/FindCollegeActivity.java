@@ -1,13 +1,8 @@
 package com.vappna.collegenav;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
@@ -17,26 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.joooonho.SelectableRoundedImageView;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
 public class FindCollegeActivity extends ActionBarActivity {
 
@@ -55,6 +34,8 @@ public class FindCollegeActivity extends ActionBarActivity {
     SelectableRoundedImageView guilfordButton, uncchButton;
     TextView guilfordCollegeTV, uncCHTV;
 
+    Bundle infoBundle;
+    String username, password, activityName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +43,11 @@ public class FindCollegeActivity extends ActionBarActivity {
         setContentView(R.layout.find_college);
         setUpToolbar();
         setUpViews();
+
+        infoBundle = getIntent().getExtras();
+        username = infoBundle.getString("username");
+        password = infoBundle.getString("password");
+        activityName = infoBundle.getString("activityName");
 
     }
 
@@ -83,7 +69,12 @@ public class FindCollegeActivity extends ActionBarActivity {
         guilfordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startNextActivity(GUICOL);
+                User storingUser = new User(username, password, Strings.getGUICOL());
+                LocalUser localUser = new LocalUser(FindCollegeActivity.this);
+                localUser.storeUserData(storingUser);
+                localUser.setUserLoggedIn(true);
+                Intent intent = new Intent(FindCollegeActivity.this, UserHomeActivity.class);
+                startActivity(intent);
             }
         });
         mainLayout = (RelativeLayout) findViewById(R.id.main_layout);
@@ -102,11 +93,6 @@ public class FindCollegeActivity extends ActionBarActivity {
         uncCHTV.setBackgroundColor(UNCCH_COLOR_CLEAR);
     }
 
-    private void startNextActivity(String collegeName) {
-        Intent intent = new Intent(this, CollegeHomeActivity.class);
-        intent.putExtra("collegeID", collegeName);
-        startActivity(intent);
-    }
 
 
     @Override
@@ -148,9 +134,14 @@ public class FindCollegeActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-         LocalUser user = new LocalUser(this);
-        user.clearUserData();
-        super.onBackPressed();
+        if (activityName.equals("UserHomeActivity")){
+            Intent intent = new Intent(FindCollegeActivity.this, UserHomeActivity.class);
+            startActivity(intent);
+        }
+        else{
+            Intent intent = new Intent(FindCollegeActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
 
     }
 }

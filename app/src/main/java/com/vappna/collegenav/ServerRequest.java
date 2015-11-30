@@ -126,16 +126,14 @@ public class ServerRequest {
                 result = EntityUtils.toString(entity);
                 Log.e("Result", result);
                 JSONObject jsonObject = new JSONObject(result);
-
                 if(jsonObject.length() != 0){
                     Log.e("JSON output", jsonObject.toString());
-                    String username = jsonObject.getString("username");
-                    String password = jsonObject.getString("password");
-                    Log.e("Array", jsonObject.getString("username") + " " + jsonObject.getString("password"));
-                    returnedUser = new User(username, password);
-
+                    String accepted = jsonObject.getString("accepted");
+                    if(accepted.equals("no")){
+                        user = null;
+                    }
                 } else{
-                    returnedUser = null;
+                    user = null;
                     Log.e("Array", "jsonArray is empty");
                 }
             } catch (UnsupportedEncodingException e) {
@@ -150,7 +148,8 @@ public class ServerRequest {
             }
 
 
-            return returnedUser;
+           // return returnedUser;
+            return user;
         }
 
         @Override
