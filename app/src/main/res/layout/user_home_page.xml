@@ -4,7 +4,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.vappna.collegenav.CollegeHomeActivity">
+    tools:context=".UserHomeActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -37,9 +37,15 @@
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="5dp"
-                card_view:cardBackgroundColor="@color/GuilfordPrimary"
+                card_view:cardBackgroundColor="@color/ColorPrimary"
                 card_view:cardCornerRadius="7dp">
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="College Select"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
             </android.support.v7.widget.CardView>
 
 
@@ -51,8 +57,18 @@
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="5dp"
-                card_view:cardBackgroundColor="@color/GuilfordPrimary"
-                card_view:cardCornerRadius="7dp" />
+                card_view:cardBackgroundColor="#ff8000"
+                card_view:cardCornerRadius="7dp" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Info"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            </android.support.v7.widget.CardView>
+
         </LinearLayout>
 
         <LinearLayout
@@ -71,22 +87,38 @@
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="5dp"
-                card_view:cardBackgroundColor="@color/GuilfordPrimary"
+                card_view:cardBackgroundColor="#119200"
                 card_view:cardCornerRadius="7dp">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Map"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
             </android.support.v7.widget.CardView>
 
 
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/search_card"
+                android:id="@+id/friends_card"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="5dp"
-                card_view:cardBackgroundColor="@color/GuilfordPrimary"
-                card_view:cardCornerRadius="7dp" />
+                card_view:cardBackgroundColor="#f4e003"
+                card_view:cardCornerRadius="7dp" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Friends"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
         <LinearLayout
@@ -97,20 +129,6 @@
 
 
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/log_out_card"
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="16dp"
-                android:layout_weight="1"
-                android:elevation="5dp"
-                android:padding="5dp"
-                card_view:cardBackgroundColor="@color/GuilfordPrimary"
-                card_view:cardCornerRadius="7dp">
-
-            </android.support.v7.widget.CardView>
-
-
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/settings_card"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
@@ -118,14 +136,44 @@
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="5dp"
-                card_view:cardBackgroundColor="@color/GuilfordPrimary"
-                card_view:cardCornerRadius="7dp" />
+                card_view:cardBackgroundColor="#7a7a7a"
+                card_view:cardCornerRadius="7dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/log_out_card"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:elevation="5dp"
+                android:padding="5dp"
+                card_view:cardBackgroundColor="#ff002f"
+                card_view:cardCornerRadius="7dp" >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Log Out"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
+        android:id="@+id/loginText"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="Logged in as: "
@@ -133,53 +181,5 @@
         android:layout_marginBottom="8dp"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-
-    <!--    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/bottomBar">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dip"
-                android:layout_marginLeft="4dip"
-                android:layout_marginRight="4dip"
-                android:background="?android:attr/dividerVertical"
-                android:layout_alignParentTop="true"/>
-            <View
-                android:id="@+id/ViewColorPickerHelper"
-                android:layout_width="1dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="4dip"
-                android:layout_marginTop="4dip"
-                android:background="?android:attr/dividerVertical"
-                android:layout_centerHorizontal="true"/>
-            <Button
-                android:id="@+id/View_Map_Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:onClick="viewMap"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@id/ViewColorPickerHelper"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="View Map"
-                android:layout_alignParentBottom="true"/>
-            <Button
-                android:textColor="@android:color/white"
-                android:id="@+id/Learn_More_Button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:onClick="learnMore"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:background="?android:attr/selectableItemBackground"
-                android:text="Learn More"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@id/ViewColorPickerHelper"/>
-        </RelativeLayout> -->
 
 </RelativeLayout>

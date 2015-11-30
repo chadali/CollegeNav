@@ -54,7 +54,8 @@ public class MapContainerActivity extends ActionBarActivity {
         setContentView(R.layout.activity_map_container);
         colors = new Colors();
         infoBundle = getIntent().getExtras();
-        collegeID = infoBundle.getString("collegeID");
+        LocalUser user = new LocalUser(this);
+        collegeID = user.getLoggedInUser().getHomeCollege();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setUpPage(collegeID);
         setSupportActionBar(toolbar);
@@ -240,8 +241,7 @@ public class MapContainerActivity extends ActionBarActivity {
     }
     @Override
     public void onBackPressed() {
-        Intent setIntent = new Intent(this, CollegeHomeActivity.class);
-        setIntent.putExtra("collegeID", "Guilford College");
+        Intent setIntent = new Intent(this, UserHomeActivity.class);
         startActivity(setIntent);
     }
 }

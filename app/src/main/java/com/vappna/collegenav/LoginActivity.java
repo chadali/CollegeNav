@@ -76,9 +76,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(User returnedUser){
-        localUser.storeUserData(returnedUser);
-        localUser.setUserLoggedIn(true);
         Intent intent = new Intent(LoginActivity.this, FindCollegeActivity.class);
+        intent.putExtra("username", returnedUser.getUsername());
+        intent.putExtra("password", returnedUser.getPassword());
+        intent.putExtra("activityName", "loginActivity");
         startActivity(intent);
     }
 }
