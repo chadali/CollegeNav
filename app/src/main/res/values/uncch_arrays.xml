@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="uncch_academic_administrative_building_names">
+        <item>Graham Memorial Hall</item>
+        <item>Hanes Art Center</item>
+        <item>Hill Hall</item>
+        <item>Alumni Hall</item>
+        <item>Howell Hall</item>
+        <item>Kenan Music Building</item>
+        <item>Smith Building</item>
+        <item>New West</item>
+        <item>New East</item>
+        <item>Davie Hall</item>
+        <item>Caldwell Hall</item>
+        <item>Peabody Hall</item>
+        <item>Phillips Hall</item>
+        <item>YMCA Building</item>
+        <item>Carolina Hall</item>
+        <item>Caldwell Hall</item>
+        <item>Hanes Hall</item>
+        <item>Manning Hall</item>
+        <item>Hamilton Hall</item>
+        <item>Sitterson Hall</item>
+        <item>Chapman Hall</item>
+        <item>Carroll Hall</item>
+        <item>Gardner Hall</item>
+        <item>Murphey Hall</item>
+        <item>Naval Armory</item>
+        <item>Murray Hall</item>
+        <item>Venable</item>
+        <item>Dey Hall</item>
+        <item>Bingham Hall</item>
+        <item>Greenlaw Hall</item>
+        <item>Kenan Laboratories</item>
+        <item>Wilson Library, Louis Round</item>
+        <item>Coker Hall</item>
+        <item>	Wilson Hall</item>
+        <item>Sonja Haynes Center for Black Culture and History</item>
+        <item>FedEx Global Education Cente</item>
+        <item>Mitchell Hall</item>
+        <item>Genome Sciences Building</item>
+        <item>Beard Hall</item>
+        <item>Tate-Turner-Kuralt Building</item>
+        <item>McGavran-Greenberg Hall</item>
+        <item>Kerr Hall</item>
+        <item>Carrington Hall</item>
+        <item>Bondurant Hall</item>
+        <item>Rosenau Hall</item>
+        <item>Michael Hooker Research Center</item>
+        <item>MacNider Hall</item>
+        <item>Medical School Wing B</item>
+        <item>Center for Dramatic Art</item>
+        <item>Fetzer Hall</item>
+        <item>Woollen Gymnasium</item>
+        <item>Knapp-Sanders Building</item>
+        <item>Van Hecke-Wettach Hall</item>
+        <item>Koury Oral Health Sciences Building</item>
+        <item>Brauer Hall</item>
+        <item>School of Dentistry</item>
+        <item>NeuroSciences Research Building</item>
+        <item>Marsico Hall</item>
+        <item>Bioinformatics Building</item>
+        <item>McColl Building Business School</item>
+
+
+
+
+    </string-array>
+
+    <string-array name="uncch_academic_administrative_building_descriptions">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+    </string-array>
+
+    <string-array name="uncch_residential_building_names">
+        <item>Spencer Residence Hall</item>
+        <item>Alderman Residence Hall</item>
+        <item>	Kenan Residence Hall</item>
+        <item>McIver Residence Hall</item>
+        <item>Old West Residence Hall</item>
+        <item>Old East Residence Hall</item>
+        <item>Grimes Residence Hall</item>
+        <item>	Manly Residence Hall</item>
+        <item>	Aycock Residence Hall</item>
+        <item>Graham Residence Hall</item>
+        <item>Stacy Residence Hall</item>
+        <item>Everett Residence Hall</item>
+        <item>	Lewis Residence Hall</item>
+        <item>	Mangum Residence Hall</item>
+        <item>Ruffin Residence Hall</item>
+        <item>Cobb Residence Hall</item>
+        <item>Joyner Residence Hall</item>
+        <item>Alexander Residence Hall</item>
+        <item>	Connor Residence Hall</item>
+        <item>Winston Residence Hall</item>
+        <item>	Carmichael Residence Hall</item>
+        <item>	Teague Residence Hall</item>
+        <item>	Parker Residence Hall</item>
+        <item>Avery Residence Hall</item>
+        <item>Morrison Residence Hall</item>
+        <item>Paul Residence Hall</item>
+        <item>Ehringhaus Residence Hall</item>
+        <item>Koury Hall</item>
+        <item>	Craige North Residence Hall</item>
+        <item>George Moses Residence Hall</item>
+        <item>Craige Residence Hall</item>
+        <item>Hinton James Residence Hall</item>
+        <item>Taylor Hall</item>
+    </string-array>
+
+    <string-array name="uncch_residential_building_descriptions">
+        <item>Binford is a co-ed residence hall that contains rooms for approximately 155 first-year students. Average room size is 17 ft. 4 in. x 11 ft. 9 in. The hall has central air-conditioning and heating, carpeted rooms, and central laundry facilities located in the basement. The building is designed in a T-shape and has bathroom facilities and lounges in the center of each floor and kitchens on the second and third floors. The room furnishings are built-in and include the following for each resident: desk, desk chair, bed, closet and dresser with generous storage space above the closet. Roommates share one cable TV connection. All residence halls have wireless internet connectivity.</item>
+        <item>Bryan is a co-ed residence hall designed to house approximately 215 upper class students in suites of eight. Average room size is 13 ft. 7in. x 11 ft. 1 in. The hall is air-conditioned and is designed for eight students per suite (4 double bedrooms) who share a bath and a common area (common areas are unfurnished.) There is also a central laundry room in the basement and a lounge with a kitchen on the second floor. The room furnishings include the following for each resident: desk, desk chair, bed, and dresser, wardrobe or closet space. Each room shares one cable TV connection, and all halls have wireless internet connectivity. The central courtyard houses many social activities throughout the year. Bryan Hall is an upper class hall. </item>
+        <item>English Hall houses the Honors Program Residence, a co-ed residence hall of approximately 50 upper class students who are honors students or who wish to reside in an intentionally academically-focused environment. Average room size is 16 ft. 4 in. x 11 ft. 8 in. The hall is air-conditioned with carpeted floors in the rooms on either side of a corridor with central bathroom facilities. Each room has a sink and there are kitchen, lounge, study lounge and laundry facilities. The room furnishings include the following for each resident: desk, desk chair, bed, and dresser, wardrobe or closet space. Each room shares one cable TV connection. All halls have wireless internet connectivity. </item>
+        <item>Mary Hobbs Hall houses approximately 54 female upper class residents. Average room size is 13 ft. 6 in. x 12 ft. This unique building is the oldest residential facility on campus and has been renovated numerous times over the years. The hall is air-conditioned with rooms on either side of long and short corridors with central bathroom facilities, a kitchen and laundry room in the basement and three lounges. The room furnishings include the following for each resident: desk, desk chair, bed, and dresser, wardrobe or closet space. The lounges are carpeted and the halls and rooms have hardwood floors. </item>
+        <item>Milner is the largest co-ed residence hall housing approximately 250 first-year students. Average room size is 11 ft. 1 in. x 18 ft. 5 in. The rooms are air-conditioned and carpeted. Most bedrooms have a lofted bed set up, but can be unlofted. The room furnishings include the following for each resident: desk, desk chair, bed, and dresser; and storage space and a wardrobe is shared by occupants. There are rooms on either side of a corridor with central bathrooms, kitchens, lounges and laundry facilities. </item>
+        <item>The North Apartments house upper class students in four person apartments. Each apartment offers 4 single rooms which share one common bathroom, a living room and recently renovated kitchens. Each bedroom has a cable TV connection and is furnished with a desk, desk chair, bed, dresser, and closet. The apartments have wireless internet connectivity. A community laundry room is located centrally in the complex. The North Apartments offer a unique location with front porches and a tree covered quad area. </item>
+        <item>Shore Hall is an all-female residence hall housing approximately 60 students. Average room size is 13 ft. 7 in. x 11 ft. 9 in. Shore is air-conditioned and has carpeted floors on either side of a corridor with central bathrooms, kitchen, laundry facilities and a spacious lounge. The room furnishings include the following for each resident: desk, desk chair, bed, and dresser, wardrobe or closet space. Each room shares one cable connection, and all halls have wireless internet connectivity. Shore is available to upper class female students. Shore also houses the Bike Shop. </item>
+        <item>The South Apartments house upper class students in four person apartments. Each apartment offers 4 single rooms which share 2 bathrooms, a living room and a kitchen. Each room has a cable TV connection and there is wireless internet connectivity and is furnished with a desk, desk chair, bed, dresser, and closet. A community laundry room is located centrally in the complex. </item>
+    </string-array>
+
+    <string-array name="uncch_sports_and_recreational_names">
+        <item>Kenan Stadium Field</item>
+        <item>Kenan Football Center</item>
+        <item>Kenan Stadium Stands</item>
+        <item>Loudermilk Center for Excellence</item>
+        <item>Carmichael Arena</item>
+        <item>McCaskill Soccer Center</item>
+        <item>Eddie Smith Field House</item>
+        <item>Fetzer Field</item>
+        <item>	Belk Track</item>
+        <item>	Henry Stadium Field</item>
+        <item>Boshamer Stadium</item>
+        <item>Smith Student Activity Center</item>
+        <item>	Koury Natatorium</item>
+        <item>Williamson Athletic Center</item>
+
+    </string-array>
+</resources>
