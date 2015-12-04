@@ -87,4 +87,5 @@
     <string name="title_activity_pop">PopActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_friend">FriendActivity</string>
 </resources>

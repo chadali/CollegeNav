@@ -83,8 +83,12 @@ public class FindCollegeActivity extends ActionBarActivity {
         uncchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(mainLayout, "This college will be added soon!", Snackbar.LENGTH_SHORT).show();
-                //startNextActivity(UNCCH);
+                User storingUser = new User(username, password, Strings.getUNCCH());
+                LocalUser localUser = new LocalUser(FindCollegeActivity.this);
+                localUser.storeUserData(storingUser);
+                localUser.setUserLoggedIn(true);
+                Intent intent = new Intent(FindCollegeActivity.this, UserHomeActivity.class);
+                startActivity(intent);
             }
         });
         guilfordCollegeTV = (TextView) findViewById(R.id.guilford_text);

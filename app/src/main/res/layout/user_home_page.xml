@@ -39,13 +39,14 @@
                 android:padding="5dp"
                 card_view:cardBackgroundColor="@color/ColorPrimary"
                 card_view:cardCornerRadius="7dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="College Select"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:text="College Select"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </android.support.v7.widget.CardView>
 
 
@@ -58,15 +59,30 @@
                 android:elevation="5dp"
                 android:padding="5dp"
                 card_view:cardBackgroundColor="#ff8000"
-                card_view:cardCornerRadius="7dp" >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Info"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                card_view:cardCornerRadius="7dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:src="@drawable/info" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Info"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
             </android.support.v7.widget.CardView>
 
         </LinearLayout>
@@ -89,14 +105,28 @@
                 android:padding="5dp"
                 card_view:cardBackgroundColor="#119200"
                 card_view:cardCornerRadius="7dp">
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Map"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:src="@drawable/mapmarker" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Map"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
             </android.support.v7.widget.CardView>
 
 
@@ -109,14 +139,15 @@
                 android:elevation="5dp"
                 android:padding="5dp"
                 card_view:cardBackgroundColor="#f4e003"
-                card_view:cardCornerRadius="7dp" >
+                card_view:cardCornerRadius="7dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Friends"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:text="Friends"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -138,13 +169,14 @@
                 android:padding="5dp"
                 card_view:cardBackgroundColor="#7a7a7a"
                 card_view:cardCornerRadius="7dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Settings"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:text="Settings"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
             </android.support.v7.widget.CardView>
 
@@ -158,28 +190,29 @@
                 android:elevation="5dp"
                 android:padding="5dp"
                 card_view:cardBackgroundColor="#ff002f"
-                card_view:cardCornerRadius="7dp" >
+                card_view:cardCornerRadius="7dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Log Out"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
+                    android:text="Log Out"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </RelativeLayout>
 
     <TextView
-        android:layout_width="match_parent"
         android:id="@+id/loginText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Logged in as: "
-        android:gravity="center_horizontal"
         android:layout_marginBottom="8dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+        android:gravity="center_horizontal"
+        android:text="Logged in as: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
 </RelativeLayout>

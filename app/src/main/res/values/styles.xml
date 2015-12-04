@@ -18,7 +18,9 @@
         <item name="toolbarStyle">@color/GuilfordPrimary</item>
         <item name="colorAccent">@color/GuilfordPrimary</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.PopTheme">

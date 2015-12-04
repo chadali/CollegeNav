@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Register extends AppCompatActivity {
 
     Button registerButton;
@@ -48,6 +51,11 @@ public class Register extends AppCompatActivity {
             @Override
             public void done(User returnedUser) {
                 startActivity(new Intent(Register.this, LoginActivity.class));
+            }
+
+            @Override
+            public void doneRetrievingArray(List<String> returnedArray) {
+
             }
         });
     }

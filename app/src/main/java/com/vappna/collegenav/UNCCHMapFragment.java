@@ -140,40 +140,40 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
     }
 
     private void setUpuncchResidenceInfo() {
-        uncchResidenceLatLng = new ArrayList<LatLng>();
-        uncchResidenceLatLng.add(new LatLng()); // Spencer Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); // Alderman Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Kenan Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //McIver Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Old West Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Old East Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Grimes Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Manly Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Aycock Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Graham Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Stacy Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Everett Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Lewis Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Mangum Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Ruffin Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Cobb Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Joyner Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Alexander Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Connor Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Winston Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Carmichael Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Teague Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Parker Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Avery Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Morrison Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Paul Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Ehringhaus Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Koury Hall
-        uncchResidenceLatLng.add(new LatLng()); //Craige North Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //George Moses Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Craige Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Hinton James Residence Hall
-        uncchResidenceLatLng.add(new LatLng()); //Taylor Hall
+//        uncchResidenceLatLng = new ArrayList<LatLng>();
+//        uncchResidenceLatLng.add(new LatLng()); // Spencer Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); // Alderman Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Kenan Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //McIver Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Old West Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Old East Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Grimes Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Manly Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Aycock Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Graham Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Stacy Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Everett Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Lewis Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Mangum Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Ruffin Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Cobb Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Joyner Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Alexander Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Connor Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Winston Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Carmichael Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Teague Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Parker Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Avery Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Morrison Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Paul Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Ehringhaus Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Koury Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Craige North Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //George Moses Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Craige Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Hinton James Residence Hall
+//        uncchResidenceLatLng.add(new LatLng()); //Taylor Hall
     }
 
     private void setUpuncchAcademicInfo() {

@@ -24,7 +24,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by vnair on 11/14/2015.
@@ -50,6 +52,13 @@ public class ServerRequest {
         progressDialog.show();
         new FetchUserDataAsyncTask(user, callback).execute();
     }
+
+    public void getAllUsersInBackground(GetUserCallback callback){
+        progressDialog.setTitle("Getting Users");
+        progressDialog.show();
+        new GetAllUsersAsyncTask(callback).execute();
+    }
+
 
     public class StoreUserDataAsyncTask extends AsyncTask<Void, Void, Void>{
 
@@ -116,7 +125,6 @@ public class ServerRequest {
             HttpClient httpClient = new DefaultHttpClient(httpParams);
             HttpPost post = new HttpPost(SERVER_ADDRESS + "FetchUserData.php");
 
-            User returnedUser = null;
             String result = null;
             try {
                 post.setEntity(new UrlEncodedFormEntity(dataToSend));
@@ -159,4 +167,67 @@ public class ServerRequest {
             super.onPostExecute(returnedUser);
         }
     }
+
+    public class GetAllUsersAsyncTask extends AsyncTask<Void, Void, List<String>> {
+
+        GetUserCallback userCallback;
+
+        public GetAllUsersAsyncTask(GetUserCallback callback) {
+            this.userCallback = callback;
+        }
+
+        @Override
+        protected List<String> doInBackground(Void... params) {
+            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            List<String> usernames= new ArrayList<>();
+
+            HttpParams httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpParams, CONNECTION_TIMEOUT);
+
+            HttpClient httpClient = new DefaultHttpClient(httpParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "GetAllUsers.php");
+
+            String result = null;
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                HttpResponse httpResponse = httpClient.execute(post);
+
+                HttpEntity entity = httpResponse.getEntity();
+                result = EntityUtils.toString(entity);
+                Log.e("Result", result);
+                JSONArray jsonArray = new JSONArray(result);
+                if(jsonArray.length() != 0){
+                    Log.e("JSON output", jsonArray.toString());
+
+                    for(int i=0; i<jsonArray.length(); i++){
+                        usernames.add(jsonArray.get(i).toString());
+                        Log.e("Usernames output", usernames.toString());
+                    }
+                } else{
+                    Log.e("Array", "jsonArray is empty");
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.e("JSON Parser", "Error parsing data [" + e.getMessage() + "] " + result);
+            }
+
+
+            return usernames;
+        }
+
+        @Override
+        protected void onPostExecute(List<String> usernames){
+            progressDialog.dismiss();
+            userCallback.doneRetrievingArray(usernames);
+            super.onPostExecute(usernames);
+        }
+    }
+
 }

@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserHomeActivity extends ActionBarActivity {
 
@@ -36,6 +37,7 @@ public class UserHomeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         user = new LocalUser(this);
         collegeID = user.getLoggedInUser().getHomeCollege();
+        Toast.makeText(UserHomeActivity.this, collegeID, Toast.LENGTH_LONG).show();
         setContentView(R.layout.user_home_page);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         setUpToolbar();
@@ -47,10 +49,13 @@ public class UserHomeActivity extends ActionBarActivity {
     }
 
     private void setUpPage() {
-        if (user.getLoggedInUser().getHomeCollege() == Strings.getGUICOL()) {
+        if (collegeID.equals(Strings.getGUICOL())) {
             toolbar.setBackgroundColor(Colors.getGuilfordCollegeColor());
-            toolbar.setTitleTextColor(Color.WHITE);
         }
+        else if (collegeID.equals(Strings.getUNCCH())){
+            toolbar.setBackgroundColor(Colors.getUncchColor());
+        }
+        toolbar.setTitleTextColor(Color.WHITE);
     }
 
     private void setUpFont() {
@@ -82,6 +87,7 @@ public class UserHomeActivity extends ActionBarActivity {
         friendsCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(UserHomeActivity.this, FriendActivity.class));
             }
         });
         settingsCV = (CardView) findViewById(R.id.settings_card);
@@ -98,7 +104,7 @@ public class UserHomeActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Home");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && collegeID.equals(Strings.getGUICOL())) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(getResources().getColor(R.color.GuilfordPrimaryDark));

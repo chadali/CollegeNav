@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
 
     Button loginButton, registerButton;
@@ -65,6 +68,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
             }
+
+            @Override
+            public void doneRetrievingArray(List<String> returnedArray) {
+
+            }
+
         });
     }
 
