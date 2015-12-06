@@ -24,7 +24,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,10 +64,10 @@ public class ServerRequest {
         new GetUserFriendsAsyncTask(user, callback).execute();
     }
 
-    public void storeUserFriendsInBackground(User user, GetUserCallback callback){
+    public void storeUserFriendsInBackground(User user, Friend friend, GetUserCallback callback){
         progressDialog.setTitle("Getting Friends");
         progressDialog.show();
-        new StoreUserFriendsAsyncTask(user, callback).execute();
+        new StoreUserFriendsAsyncTask(user, friend, callback).execute();
     }
 
     public class StoreUserDataAsyncTask extends AsyncTask<Void, Void, Void>{
@@ -306,67 +305,51 @@ public class ServerRequest {
         }
     }
 
-    public class StoreUserFriendsAsyncTask extends AsyncTask<Void, Void, List<String>> {
+    public class StoreUserFriendsAsyncTask extends AsyncTask<Void, Void, Void> {
 
         GetUserCallback userCallback;
         User user;
+        Friend friend;
 
-        public StoreUserFriendsAsyncTask(User user, GetUserCallback callback) {
+        public StoreUserFriendsAsyncTask(User user, Friend friend, GetUserCallback callback) {
             this.user = user;
             this.userCallback = callback;
+            this.friend = friend;
         }
 
         @Override
-        protected List<String> doInBackground(Void... params) {
+        protected Void doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
-            List<String> usernames= new ArrayList<>();
+            dataToSend.add(new BasicNameValuePair("username", user.getUsername()));
+            dataToSend.add(new BasicNameValuePair("friend", friend.getUsername()));
 
             HttpParams httpParams = new BasicHttpParams();
             HttpConnectionParams.setConnectionTimeout(httpParams, CONNECTION_TIMEOUT);
             HttpConnectionParams.setSoTimeout(httpParams, CONNECTION_TIMEOUT);
 
             HttpClient httpClient = new DefaultHttpClient(httpParams);
-            HttpPost post = new HttpPost(SERVER_ADDRESS + "GetAllUsers.php");
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "StoreUserFriends.php");
 
-            String result = null;
             try {
                 post.setEntity(new UrlEncodedFormEntity(dataToSend));
-                HttpResponse httpResponse = httpClient.execute(post);
-
-                HttpEntity entity = httpResponse.getEntity();
-                result = EntityUtils.toString(entity);
-                Log.e("Result", result);
-                JSONArray jsonArray = new JSONArray(result);
-                if(jsonArray.length() != 0){
-                    Log.e("JSON output", jsonArray.toString());
-
-                    for(int i=0; i<jsonArray.length(); i++){
-                        usernames.add(jsonArray.get(i).toString());
-                        Log.e("Usernames output", usernames.toString());
-                    }
-                } else{
-                    Log.e("Array", "jsonArray is empty");
-                }
+                httpClient.execute(post);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             } catch (ClientProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Log.e("JSON Parser", "Error parsing data [" + e.getMessage() + "] " + result);
             }
 
 
-            return usernames;
+            return null;
         }
 
         @Override
-        protected void onPostExecute(List<String> usernames){
+        protected void onPostExecute(Void aVoid){
             progressDialog.dismiss();
-            userCallback.doneRetrievingArray(usernames);
-            super.onPostExecute(usernames);
+            userCallback.done(null);
+            super.onPostExecute(aVoid);
         }
     }
 }
