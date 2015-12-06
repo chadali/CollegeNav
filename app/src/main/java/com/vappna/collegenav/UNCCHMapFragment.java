@@ -220,20 +220,20 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
             uncchAcademicMarker = uncchMap.addMarker(new MarkerOptions()
                     .position(uncchAcademicLatLng.get(i))
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.academic_icon))
-                    .title(uncchAcademicTitles.get(i))
-                    .snippet(uncchAcademicDescription.get(i)));
+                    .title(uncchAcademicTitles.get(i)));
+                   // .snippet(uncchAcademicDescription.get(i)));
             uncchAcademicMarkerArray.add(uncchAcademicMarker);
         }
 
-        for (int i = 0; i < uncchResidenceLatLng.size(); i++) {
-            uncchResidenceMarker = uncchMap.addMarker(new MarkerOptions()
-                            .position(uncchResidenceLatLng.get(i))
-                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.residencehall))
-                            .title(uncchResidenceTitles.get(i))
-            );
-
-            uncchResidenceMarkerArray.add(uncchResidenceMarker);
-        }
+//        for (int i = 0; i < uncchResidenceLatLng.size(); i++) {
+//            uncchResidenceMarker = uncchMap.addMarker(new MarkerOptions()
+//                            .position(uncchResidenceLatLng.get(i))
+//                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.residencehall))
+//                            .title(uncchResidenceTitles.get(i))
+//            );
+//
+//            uncchResidenceMarkerArray.add(uncchResidenceMarker);
+//        }
 
         for (int i = 0; i < uncchAthleticLatLng.size(); i++) {
             uncchAthleticMarker = uncchMap.addMarker(new MarkerOptions()

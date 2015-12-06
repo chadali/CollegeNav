@@ -37,7 +37,7 @@
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="5dp"
-                card_view:cardBackgroundColor="@color/ColorPrimary"
+                card_view:cardBackgroundColor="@color/GuilfordPrimary"
                 card_view:cardCornerRadius="7dp">
 
                 <TextView
@@ -138,7 +138,7 @@
                 android:layout_weight="1"
                 android:elevation="5dp"
                 android:padding="5dp"
-                card_view:cardBackgroundColor="#f4e003"
+                card_view:cardBackgroundColor="@color/ColorPrimaryDark"
                 card_view:cardCornerRadius="7dp">
 
                 <TextView

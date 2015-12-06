@@ -51,8 +51,7 @@ public class UserHomeActivity extends ActionBarActivity {
     private void setUpPage() {
         if (collegeID.equals(Strings.getGUICOL())) {
             toolbar.setBackgroundColor(Colors.getGuilfordCollegeColor());
-        }
-        else if (collegeID.equals(Strings.getUNCCH())){
+        } else if (collegeID.equals(Strings.getUNCCH())) {
             toolbar.setBackgroundColor(Colors.getUncchColor());
         }
         toolbar.setTitleTextColor(Color.WHITE);
@@ -87,7 +86,9 @@ public class UserHomeActivity extends ActionBarActivity {
         friendsCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserHomeActivity.this, FriendActivity.class));
+                Intent intent = new Intent(UserHomeActivity.this, FriendActivity.class);
+                intent.putExtra("activityName", activityName);
+                startActivity(intent);
             }
         });
         settingsCV = (CardView) findViewById(R.id.settings_card);

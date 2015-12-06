@@ -28,7 +28,7 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".FindCollegeActivity"
             android:label="@string/title_activity_main"
@@ -42,13 +42,13 @@
         <activity
             android:name=".UserHomeActivity"
             android:label="@string/title_activity_main2"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LearnMore"
-            android:label="@string/title_activity_learn_more"></activity>
+            android:label="@string/title_activity_learn_more" />
         <activity
             android:name=".SplashActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:label="@string/title_activity_main" />
         <activity
             android:name=".MapContainerActivity"
             android:label="@string/title_activity_map_container"
@@ -77,10 +77,14 @@
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".FriendActivity"
             android:label="@string/title_activity_friend"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".FindFriendActivity"
+            android:label="@string/title_activity_find_friend"
             android:theme="@style/AppTheme"></activity>
     </application>
 

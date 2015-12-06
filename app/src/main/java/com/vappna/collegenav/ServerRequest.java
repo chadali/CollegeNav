@@ -59,6 +59,17 @@ public class ServerRequest {
         new GetAllUsersAsyncTask(callback).execute();
     }
 
+    public void getUserFriendsInBackground(User user, GetUserCallback callback){
+        progressDialog.setTitle("Getting Friends");
+        progressDialog.show();
+        new GetUserFriendsAsyncTask(user, callback).execute();
+    }
+
+    public void storeUserFriendsInBackground(User user, GetUserCallback callback){
+        progressDialog.setTitle("Getting Friends");
+        progressDialog.show();
+        new StoreUserFriendsAsyncTask(user, callback).execute();
+    }
 
     public class StoreUserDataAsyncTask extends AsyncTask<Void, Void, Void>{
 
@@ -102,6 +113,7 @@ public class ServerRequest {
             super.onPostExecute(aVoid);
         }
     }
+
     public class FetchUserDataAsyncTask extends AsyncTask<Void, Void, User> {
 
         User user;
@@ -230,4 +242,131 @@ public class ServerRequest {
         }
     }
 
+    public class GetUserFriendsAsyncTask extends AsyncTask<Void, Void, List<String>> {
+
+        GetUserCallback userCallback;
+        User user;
+
+        public GetUserFriendsAsyncTask(User user, GetUserCallback callback) {
+            this.user = user;
+            this.userCallback = callback;
+        }
+
+        @Override
+        protected List<String> doInBackground(Void... params) {
+            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            List<String> usernames= new ArrayList<>();
+
+            HttpParams httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpParams, CONNECTION_TIMEOUT);
+
+            HttpClient httpClient = new DefaultHttpClient(httpParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "GetAllUsers.php");
+
+            String result = null;
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                HttpResponse httpResponse = httpClient.execute(post);
+
+                HttpEntity entity = httpResponse.getEntity();
+                result = EntityUtils.toString(entity);
+                Log.e("Result", result);
+                JSONArray jsonArray = new JSONArray(result);
+                if(jsonArray.length() != 0){
+                    Log.e("JSON output", jsonArray.toString());
+
+                    for(int i=0; i<jsonArray.length(); i++){
+                        usernames.add(jsonArray.get(i).toString());
+                        Log.e("Usernames output", usernames.toString());
+                    }
+                } else{
+                    Log.e("Array", "jsonArray is empty");
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.e("JSON Parser", "Error parsing data [" + e.getMessage() + "] " + result);
+            }
+
+
+            return usernames;
+        }
+
+        @Override
+        protected void onPostExecute(List<String> usernames){
+            progressDialog.dismiss();
+            userCallback.doneRetrievingArray(usernames);
+            super.onPostExecute(usernames);
+        }
+    }
+
+    public class StoreUserFriendsAsyncTask extends AsyncTask<Void, Void, List<String>> {
+
+        GetUserCallback userCallback;
+        User user;
+
+        public StoreUserFriendsAsyncTask(User user, GetUserCallback callback) {
+            this.user = user;
+            this.userCallback = callback;
+        }
+
+        @Override
+        protected List<String> doInBackground(Void... params) {
+            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            List<String> usernames= new ArrayList<>();
+
+            HttpParams httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpParams, CONNECTION_TIMEOUT);
+
+            HttpClient httpClient = new DefaultHttpClient(httpParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "GetAllUsers.php");
+
+            String result = null;
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                HttpResponse httpResponse = httpClient.execute(post);
+
+                HttpEntity entity = httpResponse.getEntity();
+                result = EntityUtils.toString(entity);
+                Log.e("Result", result);
+                JSONArray jsonArray = new JSONArray(result);
+                if(jsonArray.length() != 0){
+                    Log.e("JSON output", jsonArray.toString());
+
+                    for(int i=0; i<jsonArray.length(); i++){
+                        usernames.add(jsonArray.get(i).toString());
+                        Log.e("Usernames output", usernames.toString());
+                    }
+                } else{
+                    Log.e("Array", "jsonArray is empty");
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.e("JSON Parser", "Error parsing data [" + e.getMessage() + "] " + result);
+            }
+
+
+            return usernames;
+        }
+
+        @Override
+        protected void onPostExecute(List<String> usernames){
+            progressDialog.dismiss();
+            userCallback.doneRetrievingArray(usernames);
+            super.onPostExecute(usernames);
+        }
+    }
 }
