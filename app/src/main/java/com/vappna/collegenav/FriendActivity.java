@@ -1,5 +1,6 @@
 package com.vappna.collegenav;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,7 +16,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FriendActivity extends AppCompatActivity {
@@ -24,18 +28,47 @@ public class FriendActivity extends AppCompatActivity {
     TextView noFriendTV;
     ImageView noFriendIV;
     FloatingActionButton addFriendFAB;
+    Context cxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend);
+        cxt = FriendActivity.this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         getSupportActionBar().setTitle("Friends");
         noFriendTV = (TextView) findViewById(R.id.no_friend_message);
         noFriendIV = (ImageView) findViewById(R.id.sad_face);
         allUsersLV = (ListView) findViewById(R.id.all_users_listview);
-        Log.d("Friends",new LocalUser(FriendActivity.this).getLoggedInUser().getFriends().toString());
+
+        Log.d("Friends",new LocalUser(cxt).getLoggedInUser().getFriends().toString());
+
+        ServerRequest request = new ServerRequest(cxt);
+        request.getUserFriendsInBackground(new LocalUser(cxt).getLoggedInUser(), new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+
+            }
+            @Override
+            public void done(LatLng userLocation) {
+
+            }
+
+            @Override
+            public void doneRetrievingArray(ArrayList<String> returnedList) {
+                LocalUser localUser = new LocalUser(cxt);
+                localUser.storeUserData(new User(localUser.getLoggedInUser().getUsername(), localUser.getLoggedInUser().getPassword(), localUser.getLoggedInUser().getHomeCollege(), returnedList));
+            }
+        });
 
         if (!new LocalUser(FriendActivity.this).getLoggedInUser().getFriends().isEmpty()) {
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(FriendActivity.this, android.R.layout.simple_list_item_1, new LocalUser(FriendActivity.this).getLoggedInUser().getFriends());
@@ -48,20 +81,29 @@ public class FriendActivity extends AppCompatActivity {
             noFriendIV.setVisibility(View.VISIBLE);
             noFriendTV.setVisibility(View.VISIBLE);
         }
-
-        addFriendFAB = (FloatingActionButton) findViewById(R.id.addfriend);
-        addFriendFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(FriendActivity.this, FindFriendActivity.class));
-            }
-        });
-
     }
 
     @Override
     protected void onResume() {
-        Log.d("Friends",new LocalUser(FriendActivity.this).getLoggedInUser().getFriends().toString());
+        Log.d("Friends",new LocalUser(cxt).getLoggedInUser().getFriends().toString());
+
+        ServerRequest request = new ServerRequest(cxt);
+        request.getUserFriendsInBackground(new LocalUser(cxt).getLoggedInUser(), new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+
+            }
+            @Override
+            public void done(LatLng userLocation) {
+
+            }
+
+            @Override
+            public void doneRetrievingArray(ArrayList<String> returnedList) {
+                LocalUser localUser = new LocalUser(cxt);
+                localUser.storeUserData(new User(localUser.getLoggedInUser().getUsername(), localUser.getLoggedInUser().getPassword(), localUser.getLoggedInUser().getHomeCollege(), returnedList));
+            }
+        });
 
         if (!new LocalUser(FriendActivity.this).getLoggedInUser().getFriends().isEmpty()) {
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(FriendActivity.this, android.R.layout.simple_list_item_1, new LocalUser(FriendActivity.this).getLoggedInUser().getFriends());
@@ -99,4 +141,8 @@ public class FriendActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), UserHomeActivity.class));
+    }
 }

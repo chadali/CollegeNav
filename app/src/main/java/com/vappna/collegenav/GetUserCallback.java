@@ -1,5 +1,7 @@
 package com.vappna.collegenav;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,5 +11,6 @@ import java.util.List;
 public interface GetUserCallback {
 
     public abstract void done(User returnedUser);
-    public abstract void doneRetrievingArray(List<String> returnedArray);
+    public abstract void done(LatLng userLocation);
+    public abstract void doneRetrievingArray(ArrayList<String> returnedArray);
 }

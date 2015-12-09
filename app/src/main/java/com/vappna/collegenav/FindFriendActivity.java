@@ -4,8 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,6 +11,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +36,20 @@ public class FindFriendActivity extends AppCompatActivity {
             }
 
             @Override
-            public void doneRetrievingArray(List<String> returnedArray) {
+            public void done(LatLng userLocation) {
+
+            }
+
+            @Override
+            public void doneRetrievingArray(ArrayList<String> returnedArray) {
                 Log.e("friend", returnedArray.toString());
                 arrayAdapter = new ArrayAdapter<>(FindFriendActivity.this, android.R.layout.simple_list_item_1, returnedArray);
+                returnedArray.remove(returnedArray.indexOf(new LocalUser(FindFriendActivity.this).getLoggedInUser().getUsername()));
                 allUsersLV = (ListView) findViewById(R.id.all_users_listview);
                 allUsersLV.setAdapter(arrayAdapter);
             }
         });
-
+        final LocalUser localUser = new LocalUser(FindFriendActivity.this);
         allUsersLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> parent, final View view, final int position, long id) {
@@ -52,7 +58,24 @@ public class FindFriendActivity extends AppCompatActivity {
                 dialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        LocalUser localUser = new LocalUser(FindFriendActivity.this);
+                        ServerRequest serverRequest1 = new ServerRequest(FindFriendActivity.this);
+                        serverRequest1.storeUserFriendsInBackground(localUser.getLoggedInUser(), new Friend(parent.getItemAtPosition(position).toString()), new GetUserCallback() {
+                            @Override
+                            public void done(User returnedUser) {
+
+                            }
+                            @Override
+                            public void done(LatLng userLocation) {
+
+                            }
+
+                            @Override
+                            public void doneRetrievingArray(ArrayList<String> returnedArray) {
+                                LocalUser localUser = new LocalUser(FindFriendActivity.this);
+                                localUser.storeUserData(new User(localUser.getLoggedInUser().getUsername(), localUser.getLoggedInUser().getPassword(), localUser.getLoggedInUser().getHomeCollege(), returnedArray));
+                            }
+                        });
+
                         if(localUser.getLoggedInUser().getFriends().isEmpty()){
                             ArrayList<String> friends = new ArrayList<String>();
                             friends.add(parent.getItemAtPosition(position).toString());
@@ -75,4 +98,8 @@ public class FindFriendActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(FindFriendActivity.this, FriendActivity.class));
+    }
 }

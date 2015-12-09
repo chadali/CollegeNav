@@ -13,12 +13,20 @@
     tools:context="com.vappna.collegenav.FriendActivity"
     tools:showIn="@layout/activity_friend">
 
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/friends"
+        android:src="@drawable/friends" />
+
     <TextView
         android:id="@+id/friends_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
+        android:layout_below="@id/friends"
         android:text="Friends"
         android:textColor="@android:color/white"
         android:textSize="32dp" />
@@ -30,35 +38,33 @@
         android:layout_below="@id/friends_text" />
 
     <ImageView
+        android:id="@+id/sad_face"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/friends_text"
         android:layout_centerInParent="true"
-        android:src="@drawable/sad"
-        android:id="@+id/sad_face"
-        android:layout_marginTop="32dp"
-        android:layout_below="@id/friends_text"/>
+        android:src="@drawable/sad" />
 
     <TextView
+        android:id="@+id/no_friend_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:text="It looks like you have no friends. Don't be lonely, go on and add some!"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:id="@+id/no_friend_message"
+        android:layout_below="@id/sad_face"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/sad_face"/>
+        android:gravity="center"
+        android:text="It looks like you have no friends. Don't be lonely, go on and add some!"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addfriend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:id="@+id/addfriend"
-        android:src="@drawable/addfriend"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="64dp"
         android:layout_marginRight="12dp"
-        android:layout_marginBottom="64dp"/>
-
+        android:src="@drawable/addfriend" />
 
 
 </RelativeLayout>

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,9 +54,13 @@ public class Register extends AppCompatActivity {
             public void done(User returnedUser) {
                 startActivity(new Intent(Register.this, LoginActivity.class));
             }
+            @Override
+            public void done(LatLng userLocation) {
+
+            }
 
             @Override
-            public void doneRetrievingArray(List<String> returnedArray) {
+            public void doneRetrievingArray(ArrayList<String> returnedArray) {
 
             }
         });

@@ -23,6 +23,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
+
 public class MapContainerActivity extends ActionBarActivity {
 
     Colors colors;
@@ -48,6 +53,8 @@ public class MapContainerActivity extends ActionBarActivity {
 
     NavigationDrawerFragment drawerFragment;
 
+    LatLng usersLocation, friendLocation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +68,73 @@ public class MapContainerActivity extends ActionBarActivity {
         setUpPage(collegeID);
         setSupportActionBar(toolbar);
         setUpNavigationDrawer();
+
+        ServerRequest request = new ServerRequest(MapContainerActivity.this);
+        request.getUserFriendsInBackground(new LocalUser(MapContainerActivity.this).getLoggedInUser(), new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+
+            }
+
+            @Override
+            public void done(LatLng userLocation) {
+
+            }
+
+            @Override
+            public void doneRetrievingArray(final ArrayList<String> returnedArray) {
+
+                if (gcMapFragment != null) {
+                    for (int i = 0; i < returnedArray.size(); i++) {
+                        Friend friend = new Friend(returnedArray.get(i));
+                        final int x = i;
+                        new ServerRequest(MapContainerActivity.this).getUserLocationInBackground(friend, new GetUserCallback() {
+                            @Override
+                            public void done(User returnedUser) {
+
+                            }
+
+                            @Override
+                            public void done(LatLng userLocation) {
+                                gcMapFragment.addMarkers(new Friend(returnedArray.get(x)), userLocation);
+                            }
+
+                            @Override
+                            public void doneRetrievingArray(ArrayList<String> returnedArray) {
+
+                            }
+                        });
+                    }
+                } else if (uncchMapFragment != null) {
+                    for (int i = 0; i < returnedArray.size(); i++) {
+                        Friend friend = new Friend(returnedArray.get(i));
+                        final int x = i;
+                        new ServerRequest(MapContainerActivity.this).getUserLocationInBackground(friend, new GetUserCallback() {
+                            @Override
+                            public void done(User returnedUser) {
+
+                            }
+
+                            @Override
+                            public void done(LatLng userLocation) {
+                                if(userLocation != null) {
+                                    uncchMapFragment.addMarkers(new Friend(returnedArray.get(x)), userLocation);
+                                }
+                            }
+
+                            @Override
+                            public void doneRetrievingArray(ArrayList<String> returnedArray) {
+
+                            }
+                        });
+                    }
+                }
+            }
+        });
     }
+
     @Override
-    public void onNewIntent(Intent intent){
+    public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         // getIntent() should always return the most recent
         setIntent(intent);
@@ -74,7 +145,7 @@ public class MapContainerActivity extends ActionBarActivity {
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
     }
 
-    public void showDirectionsDialog(){
+    public void showDirectionsDialog() {
         Dialog dialog = new Dialog(MapContainerActivity.this);
         dialog.setContentView(R.layout.directions_dialog_layout);
         dialog.setTitle("Directions: ");
@@ -97,6 +168,7 @@ public class MapContainerActivity extends ActionBarActivity {
         });
         dialog.show();
     }
+
     private void setUpPage(String collegeID) {
         if (collegeID.equals(strings.getGUICOL())) {
             gcMapFragment = new GuilfordCollegeMapFragment();
@@ -176,13 +248,13 @@ public class MapContainerActivity extends ActionBarActivity {
                 if (isAthleticMarkerVisible) {
                     gcMapFragment.setMarkerVisibilityFalse("athleticMarker");
                     setButtonAlpha(athleticIcon, athleticIconText, 0.4f);
-                    Log.d("test","Turned markers off");
+                    Log.d("test", "Turned markers off");
                     isAthleticMarkerVisible = false;
                 } else if (!isAthleticMarkerVisible) {
                     gcMapFragment.setMarkerVisibilityTrue("athleticMarker");
-                    Log.d("test","Turn button on");
+                    Log.d("test", "Turn button on");
                     setButtonAlpha(athleticIcon, athleticIconText, 1.0f);
-                    Log.d("test","Turn marker on");
+                    Log.d("test", "Turn marker on");
                     isAthleticMarkerVisible = true;
                 }
             }
@@ -240,16 +312,40 @@ public class MapContainerActivity extends ActionBarActivity {
             return true;
         }
 
-        if(id == R.id.action_search){
+        if (id == R.id.action_search) {
             Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.favorite) {
-            return true;
-        }
+        if (id == R.id.send_location) {
+            if (collegeID.equals(Strings.getGUICOL())) {
+                usersLocation = gcMapFragment.getUserLocation();
+            }
+            if (collegeID.equals(Strings.getUNCCH())) {
+                usersLocation = uncchMapFragment.getUserLocation();
+            }
+            ServerRequest serverRequest = new ServerRequest(MapContainerActivity.this);
+            serverRequest.storeUserLocationInBackground(new LocalUser(getApplicationContext()).getLoggedInUser(), usersLocation, new GetUserCallback() {
+                @Override
+                public void done(User returnedUser) {
 
+                }
+                @Override
+                public void done(LatLng userLocation) {
+
+                }
+
+                @Override
+                public void doneRetrievingArray(ArrayList<String> returnedArray) {
+
+                }
+            });
+
+
+        }
         return super.onOptionsItemSelected(item);
+
     }
+
     @Override
     protected void onResume() {
         super.onResume();
