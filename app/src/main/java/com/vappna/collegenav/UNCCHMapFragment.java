@@ -51,14 +51,17 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
     String[] uncchResidenceTitlesArray;
     List<String> uncchResidenceTitles;
 
-    ArrayList<LatLng> uncchAcademicLatLng, uncchResidenceLatLng, uncchAthleticLatLng;
+    String[] uncchDiningTitlesArray;
+    List<String> uncchDiningTitles;
+
+    ArrayList<LatLng> uncchAcademicLatLng, uncchResidenceLatLng, uncchAthleticLatLng, uncchDiningLatLng;
 
     String[] uncchAcademicDescriptionArray, uncchAthleticDescriptionArray, uncchResidenceDescriptionArray;
     List<String> uncchAcademicDescription, uncchAthleticDescription, uncchResidenceDescription;
 
-    ArrayList<Marker> uncchAcademicMarkerArray, uncchResidenceMarkerArray, uncchAthleticMarkerArray;
+    ArrayList<Marker> uncchAcademicMarkerArray, uncchResidenceMarkerArray, uncchAthleticMarkerArray, uncchDiningMarkerArray;
 
-    Marker uncchAcademicMarker, uncchResidenceMarker, uncchAthleticMarker;
+    Marker uncchAcademicMarker, uncchResidenceMarker, uncchAthleticMarker, uncchDiningMarker;
     MapContainerActivity MCA;
 
     Context cxt;
@@ -112,6 +115,10 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
         uncchAthleticDescriptionArray = getResources().getStringArray(R.array.uncch_residential_building_descriptions);
         uncchAthleticDescription = Arrays.asList(uncchAthleticDescriptionArray);
         uncchAthleticMarkerArray = new ArrayList<Marker>();
+
+        uncchDiningTitlesArray = getResources().getStringArray(R.array.uncch_dining_names);
+        uncchDiningTitles = Arrays.asList(uncchDiningTitlesArray);
+        uncchDiningMarkerArray = new ArrayList<Marker>();
     }
 
     private void setUpLatLng() {
@@ -119,6 +126,7 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
         setUpuncchAcademicInfo();
         setUpuncchSportsInfo();
         setUpuncchResidenceInfo();
+        setUpuncchDiningInfo();
 
     }
 
@@ -141,40 +149,40 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
     }
 
     private void setUpuncchResidenceInfo() {
-//        uncchResidenceLatLng = new ArrayList<LatLng>();
-//        uncchResidenceLatLng.add(new LatLng()); // Spencer Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); // Alderman Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Kenan Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //McIver Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Old West Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Old East Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Grimes Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Manly Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Aycock Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Graham Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Stacy Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Everett Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Lewis Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Mangum Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Ruffin Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Cobb Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Joyner Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Alexander Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Connor Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Winston Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Carmichael Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Teague Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Parker Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Avery Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Morrison Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Paul Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Ehringhaus Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Koury Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Craige North Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //George Moses Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Craige Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Hinton James Residence Hall
-//        uncchResidenceLatLng.add(new LatLng()); //Taylor Hall
+        uncchResidenceLatLng = new ArrayList<LatLng>();
+        uncchResidenceLatLng.add(new LatLng(35.915003, -79.049316)); // Spencer Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.914739, -79.048208)); // Alderman Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.914585, -79.047503)); //Kenan Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.914051, -79.047851)); //McIver Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.911980, -79.051766)); //Old West Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912330, -79.050787)); //Old East Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912435, -79.048489)); //Grimes Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912625, -79.047889)); //Manly Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912816, -79.047184)); //Aycock Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.913037, -79.046615)); //Graham Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912975, -79.046107)); //Stacy Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912588, -79.046342)); //Everett Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912379, -79.046934)); //Lewis Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912035, -79.047510)); //Mangum Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.911783, -79.048079)); //Ruffin Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.912422, -79.044733)); //Cobb Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.911501, -79.046638)); //Joyner Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.911372, -79.046251)); //Alexander Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.910880, -79.046076)); //Connor Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.910358, -79.045940)); //Winston Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.908318, -79.046137)); //Carmichael Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.907617, -79.045022)); //Teague Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.906935, -79.044422)); //Parker Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.906229, -79.044256)); //Avery Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.904499, -79.046174)); //Morrison Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.904032, -79.045901)); //Paul Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.904382, -79.042859)); //Ehringhaus Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.903614, -79.043504)); //Koury Hall
+        uncchResidenceLatLng.add(new LatLng(35.903515, -79.046000)); //Craige North Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.903159, -79.043716)); //George Moses Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.902649, -79.045226)); //Craige Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.902385, -79.043276)); //Hinton James Residence Hall
+        uncchResidenceLatLng.add(new LatLng(35.901549, -79.043633)); //Taylor Hall
     }
 
     private void setUpuncchAcademicInfo() {
@@ -206,6 +214,28 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
         uncchAcademicLatLng.add(new LatLng(36.094402, -79.888490)); // The Hut
     }
 
+    private void setUpuncchDiningInfo() {
+        uncchDiningLatLng = new ArrayList<LatLng>();
+        uncchDiningLatLng.add(new LatLng(35.914163, -79.051610)); //Common Grounds Cafe
+        uncchDiningLatLng.add(new LatLng(35.911417, -79.051200)); //Blue Ram
+        uncchDiningLatLng.add(new LatLng(35.910618, -79.048811)); //Top of Lenoir
+        uncchDiningLatLng.add(new LatLng(35.909690, -79.048371)); //The Pit Stop
+        uncchDiningLatLng.add(new LatLng(35.910317, -79.047407)); //Alpine Bagel
+        uncchDiningLatLng.add(new LatLng(35.907938, -79.053968)); //EspressOasis Global
+        uncchDiningLatLng.add(new LatLng(35.907385, -79.050737)); //Genomic Cafe
+        uncchDiningLatLng.add(new LatLng(35.905911, -79.051708)); //The Beach Cafe
+        uncchDiningLatLng.add(new LatLng(35.905751, -79.052967)); //Friends' Cafe
+        uncchDiningLatLng.add(new LatLng(35.905382, -79.054181)); //The Atrium Cafe
+        uncchDiningLatLng.add(new LatLng(35.904571, -79.053081)); //Raynor Food Center
+        uncchDiningLatLng.add(new LatLng(35.903987, -79.054613)); //Alpine Deli at Tar Heal
+        uncchDiningLatLng.add(new LatLng(35.901725, -79.053235)); //Kind Coffee
+        uncchDiningLatLng.add(new LatLng(35.900090, -79.055336)); //Courtyard Café
+        uncchDiningLatLng.add(new LatLng(35.899640, -79.046208)); //Cafe McColl
+        uncchDiningLatLng.add(new LatLng(35.905772, -79.046397)); //Rams Head Market and Subway
+        uncchDiningLatLng.add(new LatLng(35.905950, -79.045548)); //Rams Head Dining Hall
+        uncchDiningLatLng.add(new LatLng(35.908322, -79.042612)); //The Law Bar
+    }
+
     private void setUpMap() {
         uncchMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         uncchMap.setPadding(0, 0, 0, 64);
@@ -226,15 +256,15 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
             uncchAcademicMarkerArray.add(uncchAcademicMarker);
         }
 
-//        for (int i = 0; i < uncchResidenceLatLng.size(); i++) {
-//            uncchResidenceMarker = uncchMap.addMarker(new MarkerOptions()
-//                            .position(uncchResidenceLatLng.get(i))
-//                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.residencehall))
-//                            .title(uncchResidenceTitles.get(i))
-//            );
-//
-//            uncchResidenceMarkerArray.add(uncchResidenceMarker);
-//        }
+        for (int i = 0; i < uncchResidenceLatLng.size(); i++) {
+            uncchResidenceMarker = uncchMap.addMarker(new MarkerOptions()
+                            .position(uncchResidenceLatLng.get(i))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.residencehall))
+                            .title(uncchResidenceTitles.get(i))
+            );
+
+            uncchResidenceMarkerArray.add(uncchResidenceMarker);
+        }
 
         for (int i = 0; i < uncchAthleticLatLng.size(); i++) {
             uncchAthleticMarker = uncchMap.addMarker(new MarkerOptions()
@@ -244,6 +274,16 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
             );
 
             uncchAthleticMarkerArray.add(uncchAthleticMarker);
+        }
+
+        for (int i = 0; i < uncchDiningLatLng.size(); i++) {
+            uncchDiningMarker = uncchMap.addMarker(new MarkerOptions()
+                            .position(uncchDiningLatLng.get(i))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.dining_icon))
+                            .title(uncchDiningTitles.get(i))
+            );
+
+            uncchDiningMarkerArray.add(uncchDiningMarker);
         }
 
 
@@ -338,6 +378,19 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
                 uncchMarker.setVisible(false);
             }
         }
+
+        if (markerName.equals("diningMarker")) {
+            for (final Marker uncchMarker : uncchDiningMarkerArray) {
+                ani1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        uncchMarker.setAlpha((float) animation.getAnimatedValue());
+                    }
+                });
+                ani1.start();
+                uncchMarker.setVisible(false);
+            }
+        }
     }
 
     public void setMarkerVisibilityTrue(String markerName) {
@@ -369,6 +422,18 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
         }
         if (markerName.equals("athleticMarker")) {
             for (final Marker uncchMarker : uncchAthleticMarkerArray) {
+                ani2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        uncchMarker.setAlpha((float) animation.getAnimatedValue());
+                    }
+                });
+                ani2.start();
+                uncchMarker.setVisible(true);
+            }
+        }
+        if (markerName.equals("diningMarker")) {
+            for (final Marker uncchMarker : uncchDiningMarkerArray) {
                 ani2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
