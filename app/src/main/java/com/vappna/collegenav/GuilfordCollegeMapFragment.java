@@ -50,14 +50,20 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
     String[] guilfordResidenceTitlesArray;
     List<String> guilfordResidenceTitles;
 
-    ArrayList<LatLng> guilfordAcademicLatLng, guilfordResidenceLatLng, guilfordAthleticLatLng;
+    String[] guilfordDiningTitlesArray;
+    List<String> guilfordDiningTitles;
+
+    String[] guilfordHealthAndSafetyTitlesArray;
+    List<String> guilfordHealthAndSafetyTitles;
+
+    ArrayList<LatLng> guilfordAcademicLatLng, guilfordResidenceLatLng, guilfordAthleticLatLng, guilfordDiningLatLng, guilfordHealthAndSafetyLatLng;
 
     String[] guilfordAcademicDescriptionArray, guilfordAthleticDescriptionArray, guilfordResidenceDescriptionArray;
     List<String> guilfordAcademicDescription, guilfordAthleticDescription, guilfordResidenceDescription;
 
-    ArrayList<Marker> guilfordAcademicMarkerArray, guilfordResidenceMarkerArray, guilfordAthleticMarkerArray;
+    ArrayList<Marker> guilfordAcademicMarkerArray, guilfordResidenceMarkerArray, guilfordAthleticMarkerArray, guilfordDiningMarkerArray, guilfordHealthAndSafetyMarkerArray;
 
-    Marker guilfordAcademicMarker, guilfordResidenceMarker, guilfordAthleticMarker;
+    Marker guilfordAcademicMarker, guilfordResidenceMarker, guilfordAthleticMarker, guilfordDiningMarker, guilfordHealthAndSafetyMarker;
     MapContainerActivity MCA;
 
     Context cxt;
@@ -111,6 +117,18 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
         guilfordAthleticDescriptionArray = getResources().getStringArray(R.array.guilford_residential_building_descriptions);
         guilfordAthleticDescription = Arrays.asList(guilfordAthleticDescriptionArray);
         guilfordAthleticMarkerArray = new ArrayList<Marker>();
+
+        guilfordDiningTitlesArray = getResources().getStringArray(R.array.guilford_sports_and_recreational_names);
+        guilfordDiningTitles = Arrays.asList(guilfordDiningTitlesArray);
+        //guilfordDiningDescriptionArray = getResources().getStringArray(R.array.guilford_residential_building_descriptions);
+        //guilfordAthleticDescription = Arrays.asList(guilfordAthleticDescriptionArray);
+        guilfordDiningMarkerArray = new ArrayList<Marker>();
+
+        guilfordHealthAndSafetyTitlesArray = getResources().getStringArray(R.array.guilford_sports_and_recreational_names);
+        guilfordHealthAndSafetyTitles = Arrays.asList(guilfordHealthAndSafetyTitlesArray);
+        //guilfordAthleticDescriptionArray = getResources().getStringArray(R.array.guilford_residential_building_descriptions);
+        //guilfordAthleticDescription = Arrays.asList(guilfordAthleticDescriptionArray);
+        guilfordHealthAndSafetyMarkerArray = new ArrayList<Marker>();
     }
 
     private void setUpLatLng() {
@@ -118,6 +136,8 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
         setUpGuilfordAcademicInfo();
         setUpGuilfordSportsInfo();
         setUpGuilfordResidenceInfo();
+        setUpGuilfordDiningInfo();
+        setUpGuilfordHealthAndSafetyInfo();
 
     }
 
@@ -185,6 +205,24 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
         guilfordAcademicLatLng.add(new LatLng(36.094402, -79.888490)); // The Hut
     }
 
+    private void setUpGuilfordDiningInfo() {
+        guilfordDiningLatLng = new ArrayList<LatLng>();
+        guilfordDiningLatLng.add(new LatLng(36.095540, -79.886997)); //Greenleaf Coffee Co-Op
+        guilfordDiningLatLng.add(new LatLng(36.094286, -79.887513)); //The Grill
+        guilfordDiningLatLng.add(new LatLng(36.094324, -79.887912)); //Dining Hall
+
+    }
+
+    private void setUpGuilfordHealthAndSafetyInfo() {
+        guilfordHealthAndSafetyLatLng = new ArrayList<LatLng>();
+        guilfordHealthAndSafetyLatLng.add(new LatLng(36.096758, -79.884482)); //Milner Student Health and Counseling Center
+        guilfordHealthAndSafetyLatLng.add(new LatLng(36.095007, -79.889160)); //Public Safety Office
+        guilfordHealthAndSafetyLatLng.add(new LatLng(36.094321, -79.890166)); //Emergency Phone
+        guilfordHealthAndSafetyLatLng.add(new LatLng(36.097689, -79.886835)); //Emergency Phone
+        guilfordHealthAndSafetyLatLng.add(new LatLng(36.095794, -79.888892)); //Emergency Phone
+        guilfordHealthAndSafetyLatLng.add(new LatLng(36.101135, -79.889309)); //Eagle Family Medicine at Guilford College
+    }
+
     private void setUpMap() {
         guilfordMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         guilfordMap.setPadding(0, 0, 0, 64);
@@ -223,6 +261,26 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
             );
 
             guilfordAthleticMarkerArray.add(guilfordAthleticMarker);
+        }
+
+        for (int i = 0; i < guilfordDiningLatLng.size(); i++) {
+            guilfordDiningMarker = guilfordMap.addMarker(new MarkerOptions()
+                            .position(guilfordDiningLatLng.get(i))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.dining_icon))
+                            .title(guilfordDiningTitles.get(i))
+            );
+
+            guilfordDiningMarkerArray.add(guilfordDiningMarker);
+        }
+
+        for (int i = 0; i < guilfordHealthAndSafetyLatLng.size(); i++) {
+            guilfordHealthAndSafetyMarker = guilfordMap.addMarker(new MarkerOptions()
+                            .position(guilfordHealthAndSafetyLatLng.get(i))
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.health_icon))
+                            .title(guilfordHealthAndSafetyTitles.get(i))
+            );
+
+            guilfordHealthAndSafetyMarkerArray.add(guilfordHealthAndSafetyMarker);
         }
 
 
@@ -317,6 +375,32 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
                 guilfordMarker.setVisible(false);
             }
         }
+
+        if (markerName.equals("diningMarker")) {
+            for (final Marker guilfordMarker : guilfordDiningMarkerArray) {
+                ani1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        guilfordMarker.setAlpha((float) animation.getAnimatedValue());
+                    }
+                });
+                ani1.start();
+                guilfordMarker.setVisible(false);
+            }
+        }
+
+        if (markerName.equals("healthMarker")) {
+            for (final Marker guilfordMarker : guilfordHealthAndSafetyMarkerArray) {
+                ani1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        guilfordMarker.setAlpha((float) animation.getAnimatedValue());
+                    }
+                });
+                ani1.start();
+                guilfordMarker.setVisible(false);
+            }
+        }
     }
 
     public void setMarkerVisibilityTrue(String markerName) {
@@ -348,6 +432,32 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
         }
         if (markerName.equals("athleticMarker")) {
             for (final Marker guilfordMarker : guilfordAthleticMarkerArray) {
+                ani2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        guilfordMarker.setAlpha((float) animation.getAnimatedValue());
+                    }
+                });
+                ani2.start();
+                guilfordMarker.setVisible(true);
+            }
+        }
+
+        if (markerName.equals("diningMarker")) {
+            for (final Marker guilfordMarker : guilfordDiningMarkerArray) {
+                ani2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        guilfordMarker.setAlpha((float) animation.getAnimatedValue());
+                    }
+                });
+                ani2.start();
+                guilfordMarker.setVisible(true);
+            }
+        }
+
+        if (markerName.equals("healthMarker")) {
+            for (final Marker guilfordMarker : guilfordHealthAndSafetyMarkerArray) {
                 ani2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {

@@ -34,7 +34,7 @@
         <item>Kenan Laboratories</item>
         <item>Wilson Library, Louis Round</item>
         <item>Coker Hall</item>
-        <item>	Wilson Hall</item>
+        <item>Wilson Hall</item>
         <item>Sonja Haynes Center for Black Culture and History</item>
         <item>FedEx Global Education Cente</item>
         <item>Mitchell Hall</item>
@@ -96,33 +96,33 @@
     <string-array name="uncch_residential_building_names">
         <item>Spencer Residence Hall</item>
         <item>Alderman Residence Hall</item>
-        <item>	Kenan Residence Hall</item>
+        <item>Kenan Residence Hall</item>
         <item>McIver Residence Hall</item>
         <item>Old West Residence Hall</item>
         <item>Old East Residence Hall</item>
         <item>Grimes Residence Hall</item>
-        <item>	Manly Residence Hall</item>
-        <item>	Aycock Residence Hall</item>
+        <item>Manly Residence Hall</item>
+        <item>Aycock Residence Hall</item>
         <item>Graham Residence Hall</item>
         <item>Stacy Residence Hall</item>
         <item>Everett Residence Hall</item>
-        <item>	Lewis Residence Hall</item>
-        <item>	Mangum Residence Hall</item>
+        <item>Lewis Residence Hall</item>
+        <item>Mangum Residence Hall</item>
         <item>Ruffin Residence Hall</item>
         <item>Cobb Residence Hall</item>
         <item>Joyner Residence Hall</item>
         <item>Alexander Residence Hall</item>
-        <item>	Connor Residence Hall</item>
+        <item>Connor Residence Hall</item>
         <item>Winston Residence Hall</item>
-        <item>	Carmichael Residence Hall</item>
-        <item>	Teague Residence Hall</item>
-        <item>	Parker Residence Hall</item>
+        <item>Carmichael Residence Hall</item>
+        <item>Teague Residence Hall</item>
+        <item>Parker Residence Hall</item>
         <item>Avery Residence Hall</item>
         <item>Morrison Residence Hall</item>
         <item>Paul Residence Hall</item>
         <item>Ehringhaus Residence Hall</item>
         <item>Koury Hall</item>
-        <item>	Craige North Residence Hall</item>
+        <item>Craige North Residence Hall</item>
         <item>George Moses Residence Hall</item>
         <item>Craige Residence Hall</item>
         <item>Hinton James Residence Hall</item>
@@ -141,20 +141,42 @@
     </string-array>
 
     <string-array name="uncch_sports_and_recreational_names">
-        <item>Kenan Stadium Field</item>
-        <item>Kenan Football Center</item>
-        <item>Kenan Stadium Stands</item>
-        <item>Loudermilk Center for Excellence</item>
-        <item>Carmichael Arena</item>
-        <item>McCaskill Soccer Center</item>
-        <item>Eddie Smith Field House</item>
-        <item>Fetzer Field</item>
-        <item>	Belk Track</item>
-        <item>	Henry Stadium Field</item>
-        <item>Boshamer Stadium</item>
-        <item>Smith Student Activity Center</item>
-        <item>	Koury Natatorium</item>
-        <item>Williamson Athletic Center</item>
+    <item>Kenan Stadium Field</item>
+    <item>Kenan Football Center</item>
+    <item>Kenan Stadium Stands</item>
+    <item>Loudermilk Center for Excellence</item>
+    <item>Carmichael Arena</item>
+    <item>McCaskill Soccer Center</item>
+    <item>Eddie Smith Field House</item>
+    <item>Fetzer Field</item>
+    <item>Belk Track</item>
+    <item>Henry Stadium Field</item>
+    <item>Boshamer Stadium</item>
+    <item>Smith Student Activity Center</item>
+    <item>Koury Natatorium</item>
+    <item>Williamson Athletic Center</item>
 
-    </string-array>
+</string-array>
+
+    <string-array name="uncch_dining_names">
+    <item>Common Grounds Cafe</item>
+    <item>Blue Ram</item>
+    <item>Top of Lenoir</item>
+    <item>The Pit Stop</item>
+    <item>Alpine Bagel</item>
+    <item>EspressOasis Global</item>
+    <item>Genomic Cafe</item>
+    <item>The Beach Cafe</item>
+    <item>Friends Cafe</item>
+    <item>The Atrium Cafe</item>
+    <item>Raynor Food Center</item>
+    <item>Alpine Deli at Tar Heal</item>
+    <item>Kind Coffee</item>
+    <item>Courtyard Café</item>
+    <item>Cafe McColl</item>
+    <item>Rams Head Market and Subway</item>
+    <item>Rams Head Dining Hall</item>
+    <item>The Law Bar</item>
+</string-array>
+
 </resources>

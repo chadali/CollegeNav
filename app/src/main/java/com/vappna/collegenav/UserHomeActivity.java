@@ -23,7 +23,6 @@ public class UserHomeActivity extends ActionBarActivity {
 
     Toolbar toolbar;
     String stateID, collegeID;
-    MapsActivity mapsA = new MapsActivity();
     RelativeLayout mainLayout; //bottomBar;
     Intent intent;
     Typeface dustismoFont;

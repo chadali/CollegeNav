@@ -44,7 +44,7 @@ public class MapContainerActivity extends ActionBarActivity {
     LinearLayout academicIconLayout, residenceIconLayout, athleticIconLayout, diningIconLayout, healthIconLayout;
     ImageView academicIcon, residenceIcon, athleticIcon, diningIcon, healthIcon;
     TextView academicIconText, residenceIconText, athleticIconText, diningIconText, healthIconText;
-    boolean isAcademicMarkerVisible, isResidenceMarkerVisible, isAthleticMarkerVisible;
+    boolean isAcademicMarkerVisible, isResidenceMarkerVisible, isAthleticMarkerVisible, isDiningMarkerVisible, isHealthMarkerVisible;
 
     NavigationDrawerFragment drawerFragment;
 
@@ -176,17 +176,56 @@ public class MapContainerActivity extends ActionBarActivity {
                 if (isAthleticMarkerVisible) {
                     gcMapFragment.setMarkerVisibilityFalse("athleticMarker");
                     setButtonAlpha(athleticIcon, athleticIconText, 0.4f);
-                    Log.d("test","Turned markers off");
+                    Log.d("test", "Turned markers off");
                     isAthleticMarkerVisible = false;
                 } else if (!isAthleticMarkerVisible) {
                     gcMapFragment.setMarkerVisibilityTrue("athleticMarker");
                     Log.d("test","Turn button on");
                     setButtonAlpha(athleticIcon, athleticIconText, 1.0f);
-                    Log.d("test","Turn marker on");
+                    Log.d("test", "Turn marker on");
                     isAthleticMarkerVisible = true;
                 }
             }
         });
+
+        isDiningMarkerVisible = true;
+        diningIconLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDiningMarkerVisible) {
+                    gcMapFragment.setMarkerVisibilityFalse("diningMarker");
+                    setButtonAlpha(diningIcon, diningIconText, 0.4f);
+                    Log.d("test","Turned markers off");
+                    isDiningMarkerVisible = false;
+                } else if (!isDiningMarkerVisible) {
+                    gcMapFragment.setMarkerVisibilityTrue("diningMarker");
+                    Log.d("test","Turn button on");
+                    setButtonAlpha(diningIcon, diningIconText, 1.0f);
+                    Log.d("test","Turn marker on");
+                    isDiningMarkerVisible = true;
+                }
+            }
+        });
+
+        isHealthMarkerVisible = true;
+        healthIconLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isHealthMarkerVisible) {
+                    gcMapFragment.setMarkerVisibilityFalse("healthMarker");
+                    setButtonAlpha(healthIcon, healthIconText, 0.4f);
+                    Log.d("test","Turned markers off");
+                    isHealthMarkerVisible = false;
+                } else if (!isHealthMarkerVisible) {
+                    gcMapFragment.setMarkerVisibilityTrue("healthMarker");
+                    Log.d("test","Turn button on");
+                    setButtonAlpha(healthIcon, healthIconText, 1.0f);
+                    Log.d("test","Turn marker on");
+                    isHealthMarkerVisible = true;
+                }
+            }
+        });
+
 
     }
 
