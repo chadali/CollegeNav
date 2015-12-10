@@ -392,8 +392,11 @@ public class MapContainerActivity extends ActionBarActivity {
         }
 
         if (id == R.id.action_search) {
-            Intent intent = new Intent(this, SearchActivity.class);
-            startActivity(intent);
+            if (collegeID.equals(Strings.getGUICOL())) {
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+            }
+
         }
         if (id == R.id.send_location) {
             if (collegeID.equals(Strings.getGUICOL())) {

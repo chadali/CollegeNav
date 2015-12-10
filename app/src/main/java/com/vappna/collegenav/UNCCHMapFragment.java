@@ -187,31 +187,65 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
 
     private void setUpuncchAcademicInfo() {
         uncchAcademicLatLng = new ArrayList<LatLng>();
-        uncchAcademicLatLng.add(new LatLng(36.090227, -79.887342)); // Alumni House
-        uncchAcademicLatLng.add(new LatLng(36.092747, -79.887352)); // Archdale Hall
-        uncchAcademicLatLng.add(new LatLng(36.094948, -79.889273)); // Bauman
-        uncchAcademicLatLng.add(new LatLng(36.090625, -79.887435)); // Bonner Center
-        uncchAcademicLatLng.add(new LatLng(36.096902, -79.886279)); // Community Center
-        uncchAcademicLatLng.add(new LatLng(36.091493, -79.887500)); // Dana Auidotirum
-        uncchAcademicLatLng.add(new LatLng(36.092579, -79.888827)); // Duke Hall
-        uncchAcademicLatLng.add(new LatLng(36.095382, -79.889458)); // Early College Classrooms
-        uncchAcademicLatLng.add(new LatLng(36.089698, -79.885949)); // George White House
-        uncchAcademicLatLng.add(new LatLng(36.096437, -79.888108)); // Facilities and Campus Services
-        uncchAcademicLatLng.add(new LatLng(36.094090, -79.887940)); // Founders Hall
-        uncchAcademicLatLng.add(new LatLng(36.094991, -79.890076)); // FF Science Center
-        uncchAcademicLatLng.add(new LatLng(36.090105, -79.886627)); // Friends Center at uncch
-        uncchAcademicLatLng.add(new LatLng(36.092928, -79.889522)); // Hege Library
-        uncchAcademicLatLng.add(new LatLng(36.093198, -79.886920)); // Hege-Cox Hall
-        uncchAcademicLatLng.add(new LatLng(36.093801, -79.889969)); // Hendricks Hall
-        uncchAcademicLatLng.add(new LatLng(36.089875, -79.884555)); // Hildebrandt
-        uncchAcademicLatLng.add(new LatLng(36.094771, -79.890021)); // J. Donald Cline Observatory
-        uncchAcademicLatLng.add(new LatLng(36.093397, -79.889407)); // King Hall
-        uncchAcademicLatLng.add(new LatLng(36.095861, -79.888598)); // Mail and Print Services
-        uncchAcademicLatLng.add(new LatLng(36.096727, -79.884578)); // Milner Student Counseling Center
-        uncchAcademicLatLng.add(new LatLng(36.091734, -79.888759)); // New Garden Hall
-        uncchAcademicLatLng.add(new LatLng(36.092731, -79.889442)); // Office of the President
-        uncchAcademicLatLng.add(new LatLng(36.095798, -79.886079)); // Ragsdale House
-        uncchAcademicLatLng.add(new LatLng(36.094402, -79.888490)); // The Hut
+        uncchAcademicLatLng.add(new LatLng(35.914022, -79.051559)); // Graham Memorial Hall
+        uncchAcademicLatLng.add(new LatLng(35.912348, -79.054385)); // Hanes Art Center
+        uncchAcademicLatLng.add(new LatLng(35.912606, -79.053192)); // Hill Hall
+        uncchAcademicLatLng.add(new LatLng(35.913182, -79.050975)); // Alumni Hall
+        uncchAcademicLatLng.add(new LatLng(35.913306, -79.050044)); // Howell Hall
+        uncchAcademicLatLng.add(new LatLng(36.091493, -79.887500)); // Kenan Music Building
+        uncchAcademicLatLng.add(new LatLng(35.911935, -79.053186)); // Smith Building
+        uncchAcademicLatLng.add(new LatLng(35.911852, -79.052401)); // New West
+        uncchAcademicLatLng.add(new LatLng(35.912686, -79.050210)); // New East
+        uncchAcademicLatLng.add(new LatLng(35.912769, -79.049489)); // Davie Hall
+        uncchAcademicLatLng.add(new LatLng(35.912205, -79.049049)); // Caldwell Hall
+        uncchAcademicLatLng.add(new LatLng(35.910516, -79.053534)); // Peabody Hall
+        uncchAcademicLatLng.add(new LatLng(35.910702, -79.052647)); // Phillips Hall
+        uncchAcademicLatLng.add(new LatLng(35.911312, -79.051154)); // YMCA Building
+        uncchAcademicLatLng.add(new LatLng(35.911208, -79.050159)); // Carolina Hall
+        uncchAcademicLatLng.add(new LatLng(36.089875, -79.884555)); // Hanes Hall
+        uncchAcademicLatLng.add(new LatLng(36.094771, -79.890021)); // Manning Hall
+        uncchAcademicLatLng.add(new LatLng(36.093397, -79.889407)); // Hamilton Hall
+        uncchAcademicLatLng.add(new LatLng(35.909860, -79.053278)); // Sitterson Hall
+        uncchAcademicLatLng.add(new LatLng(35.910035, -79.052532)); // Chapman Hall
+        uncchAcademicLatLng.add(new LatLng(35.910216, -79.051843)); // Carroll Hall
+        uncchAcademicLatLng.add(new LatLng(35.910242, -79.051001)); // Gardner Hall
+        uncchAcademicLatLng.add(new LatLng(35.910717, -79.049629)); // Murphey Hall
+        uncchAcademicLatLng.add(new LatLng(35.909090, -79.052806)); // Naval Armory
+        uncchAcademicLatLng.add(new LatLng(35.909710, -79.051786)); // Murray Hall
+        uncchAcademicLatLng.add(new LatLng(35.909648, -79.051294)); // Venable
+        uncchAcademicLatLng.add(new LatLng(35.909880, -79.050637)); // Dey Hall
+        uncchAcademicLatLng.add(new LatLng(35.910289, -79.049585)); // Bingham Hall
+        uncchAcademicLatLng.add(new LatLng(35.910364, -79.049228)); // Greenlaw Hall
+        uncchAcademicLatLng.add(new LatLng(35.908933, -79.051198)); // Kenan Laboratories
+        uncchAcademicLatLng.add(new LatLng(35.909781, -79.049079)); // Wilson Library, Louis Round
+        uncchAcademicLatLng.add(new LatLng(35.908134, -79.051290)); // Coker Hall
+        uncchAcademicLatLng.add(new LatLng(35.907973, -79.051923)); // Wilson Hall
+        uncchAcademicLatLng.add(new LatLng(35.907921, -79.050148)); // Sonja Haynes Center for Black Culture and History
+        uncchAcademicLatLng.add(new LatLng(35.907960, -79.054068)); // FedEx Global Education Cente
+        uncchAcademicLatLng.add(new LatLng(35.907691, -79.052207)); // Mitchell Hall
+        uncchAcademicLatLng.add(new LatLng(35.907673, -79.050882)); // Genome Sciences Building
+        uncchAcademicLatLng.add(new LatLng(35.907408, -79.053366)); // Beard Hall
+        uncchAcademicLatLng.add(new LatLng(35.907104, -79.054267)); // Tate-Turner-Kuralt Building
+        uncchAcademicLatLng.add(new LatLng(35.906326, -79.054379)); // McGavran-Greenberg Hall
+        uncchAcademicLatLng.add(new LatLng(35.906687, -79.053516)); // Kerr Hall
+        uncchAcademicLatLng.add(new LatLng(35.906761, -79.052148)); // Carrington Hall
+        uncchAcademicLatLng.add(new LatLng(35.906061, -79.052330)); // Bondurant Hall
+        uncchAcademicLatLng.add(new LatLng(35.905992, -79.053661)); // Rosenau Hall
+        uncchAcademicLatLng.add(new LatLng(35.905389, -79.054282)); // Michael Hooker Research Center
+        uncchAcademicLatLng.add(new LatLng(35.905335, -79.052875)); // MacNider Hall
+        uncchAcademicLatLng.add(new LatLng(35.905544, -79.049909)); // Medical School Wing B
+        uncchAcademicLatLng.add(new LatLng(35.912005, -79.043939)); // Center for Dramatic Art
+        uncchAcademicLatLng.add(new LatLng(35.909163, -79.047027)); // Fetzer Hall
+        uncchAcademicLatLng.add(new LatLng(35.909463, -79.045866)); // Woollen Gymnasium
+        uncchAcademicLatLng.add(new LatLng(35.910000, -79.042434)); // Knapp-Sanders Building
+        uncchAcademicLatLng.add(new LatLng(35.908233, -79.042587)); // Van Hecke-Wettach Hall
+        uncchAcademicLatLng.add(new LatLng(35.904692, -79.053621)); // Koury Oral Health Sciences Building
+        uncchAcademicLatLng.add(new LatLng(35.904546, -79.053193)); // Brauer Hall
+        uncchAcademicLatLng.add(new LatLng(35.904871, -79.052967)); // School of Dentistry
+        uncchAcademicLatLng.add(new LatLng(35.903202, -79.055105)); // NeuroSciences Research Building
+        uncchAcademicLatLng.add(new LatLng(35.902526, -79.054077)); // Marsico Hall
+        uncchAcademicLatLng.add(new LatLng(35.901623, -79.053304)); // Bioinformatics Building
+
     }
 
     private void setUpuncchDiningInfo() {
@@ -293,8 +327,9 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
             public View getInfoWindow(Marker marker) {
                 LayoutInflater inflater = LayoutInflater.from(cxt);
                 View v = inflater.inflate(R.layout.info_window_layout, null);
-
-                v.setBackgroundColor(Color.argb(150, 183, 28, 28));
+                LinearLayout buttonLayout = (LinearLayout) v.findViewById(R.id.buttonLayout);
+                buttonLayout.setBackgroundColor(Colors.getUncchColor());
+                v.setBackgroundColor(Colors.getUncchColorClear());
 
                 String title = marker.getTitle();
 
