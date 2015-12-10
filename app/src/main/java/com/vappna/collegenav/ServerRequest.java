@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -65,9 +67,21 @@ public class ServerRequest {
     }
 
     public void storeUserFriendsInBackground(User user, Friend friend, GetUserCallback callback){
-        progressDialog.setTitle("Getting Friends");
+        progressDialog.setTitle("Sending Request");
         progressDialog.show();
         new StoreUserFriendsAsyncTask(user, friend, callback).execute();
+    }
+
+    public void storeUserLocationInBackground(User user, LatLng latLng, GetUserCallback callback){
+        progressDialog.setTitle("Sending Request");
+        progressDialog.show();
+        new StoreUserLocationAsyncTask(user, latLng, callback).execute();
+    }
+
+    public void getUserLocationInBackground(Friend friend, GetUserCallback callback){
+        progressDialog.setTitle("Sending Request");
+        progressDialog.show();
+        new GetUserLocationAsyncTask(friend, callback).execute();
     }
 
     public class StoreUserDataAsyncTask extends AsyncTask<Void, Void, Void>{
@@ -108,7 +122,7 @@ public class ServerRequest {
         @Override
         protected void onPostExecute(Void aVoid) {
             progressDialog.dismiss();
-            userCallback.done(null);
+            userCallback.done(user);
             super.onPostExecute(aVoid);
         }
     }
@@ -179,7 +193,7 @@ public class ServerRequest {
         }
     }
 
-    public class GetAllUsersAsyncTask extends AsyncTask<Void, Void, List<String>> {
+    public class GetAllUsersAsyncTask extends AsyncTask<Void, Void, ArrayList<String>> {
 
         GetUserCallback userCallback;
 
@@ -188,9 +202,9 @@ public class ServerRequest {
         }
 
         @Override
-        protected List<String> doInBackground(Void... params) {
+        protected ArrayList<String> doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
-            List<String> usernames= new ArrayList<>();
+            ArrayList<String> usernames= new ArrayList<>();
 
             HttpParams httpParams = new BasicHttpParams();
             HttpConnectionParams.setConnectionTimeout(httpParams, CONNECTION_TIMEOUT);
@@ -234,14 +248,14 @@ public class ServerRequest {
         }
 
         @Override
-        protected void onPostExecute(List<String> usernames){
+        protected void onPostExecute(ArrayList<String> usernames){
             progressDialog.dismiss();
             userCallback.doneRetrievingArray(usernames);
             super.onPostExecute(usernames);
         }
     }
 
-    public class GetUserFriendsAsyncTask extends AsyncTask<Void, Void, List<String>> {
+    public class GetUserFriendsAsyncTask extends AsyncTask<Void, Void, ArrayList<String>> {
 
         GetUserCallback userCallback;
         User user;
@@ -252,16 +266,17 @@ public class ServerRequest {
         }
 
         @Override
-        protected List<String> doInBackground(Void... params) {
+        protected ArrayList<String> doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
-            List<String> usernames= new ArrayList<>();
+            dataToSend.add(new BasicNameValuePair("username", user.getUsername()));
+            ArrayList<String> friends= new ArrayList<>();
 
             HttpParams httpParams = new BasicHttpParams();
             HttpConnectionParams.setConnectionTimeout(httpParams, CONNECTION_TIMEOUT);
             HttpConnectionParams.setSoTimeout(httpParams, CONNECTION_TIMEOUT);
 
             HttpClient httpClient = new DefaultHttpClient(httpParams);
-            HttpPost post = new HttpPost(SERVER_ADDRESS + "GetAllUsers.php");
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "GetUserFriends.php");
 
             String result = null;
             try {
@@ -276,9 +291,14 @@ public class ServerRequest {
                     Log.e("JSON output", jsonArray.toString());
 
                     for(int i=0; i<jsonArray.length(); i++){
-                        usernames.add(jsonArray.get(i).toString());
-                        Log.e("Usernames output", usernames.toString());
+                        if(jsonArray.get(i).toString().trim().equals("")){
+
+                        }
+                        else {
+                            friends.add(jsonArray.getString(i));
+                        }
                     }
+                    friends.toString().replace("[", "");
                 } else{
                     Log.e("Array", "jsonArray is empty");
                 }
@@ -294,14 +314,79 @@ public class ServerRequest {
             }
 
 
-            return usernames;
+            return friends;
         }
 
         @Override
-        protected void onPostExecute(List<String> usernames){
+        protected void onPostExecute(ArrayList<String> friends){
             progressDialog.dismiss();
-            userCallback.doneRetrievingArray(usernames);
-            super.onPostExecute(usernames);
+            userCallback.doneRetrievingArray(friends);
+            super.onPostExecute(friends);
+        }
+    }
+
+    public class GetUserLocationAsyncTask extends AsyncTask<Void, Void, LatLng> {
+
+        GetUserCallback userCallback;
+        Friend friend;
+
+        public GetUserLocationAsyncTask(Friend friend, GetUserCallback callback) {
+            this.friend = friend;
+            this.userCallback = callback;
+        }
+
+        @Override
+        protected LatLng doInBackground(Void... params) {
+            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            dataToSend.add(new BasicNameValuePair("username", friend.getUsername()));
+            LatLng userlocation = null;
+
+            HttpParams httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpParams, CONNECTION_TIMEOUT);
+
+            HttpClient httpClient = new DefaultHttpClient(httpParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "GetLocation.php");
+
+            String result = null;
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                HttpResponse httpResponse = httpClient.execute(post);
+
+                HttpEntity entity = httpResponse.getEntity();
+                result = EntityUtils.toString(entity);
+                Log.e("Result", result);
+                JSONObject jsonObject = new JSONObject(result);
+                if(jsonObject.length() != 0){
+                    Log.e("JSON output", jsonObject.toString());
+                    Double latitude = Double.parseDouble(jsonObject.getString("latitude"));
+                    Double longitude = Double.parseDouble(jsonObject.getString("longitude"));
+                    userlocation = new LatLng(latitude, longitude);
+
+                } else{
+                    Log.e("Array", "jsonArray is empty");
+                    userlocation = new LatLng(0,0);
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.e("JSON Parser", "Error parsing data [" + e.getMessage() + "] " + result);
+            }
+
+
+            return userlocation;
+        }
+
+        @Override
+        protected void onPostExecute(LatLng userLocation){
+            progressDialog.dismiss();
+            userCallback.done(userLocation);
+            super.onPostExecute(userLocation);
         }
     }
 
@@ -332,6 +417,70 @@ public class ServerRequest {
 
             try {
                 post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                HttpResponse httpResponse = httpClient.execute(post);
+
+                HttpEntity entity = httpResponse.getEntity();
+                String result = EntityUtils.toString(entity);
+                Log.e("Result", result);
+                JSONObject jsonObject = new JSONObject(result);
+                if(jsonObject.length() != 0) {
+                    Log.e("JSON output", jsonObject.toString());
+                    String friendString = jsonObject.getString("friend");
+                }
+                else{
+                    Log.e("Array", "jsonArray is empty");
+                }
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (ClientProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid){
+            progressDialog.dismiss();
+            userCallback.done(user);
+            super.onPostExecute(aVoid);
+        }
+    }
+
+    public class StoreUserLocationAsyncTask extends AsyncTask<Void, Void, Void> {
+
+        GetUserCallback userCallback;
+        User user;
+        LatLng userLocation;
+
+        public StoreUserLocationAsyncTask(User user, LatLng latLng, GetUserCallback callback) {
+            this.user = user;
+            this.userCallback = callback;
+            this.userLocation = latLng;
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            dataToSend.add(new BasicNameValuePair("username", user.getUsername()));
+            dataToSend.add(new BasicNameValuePair("latitude", Double.valueOf(userLocation.latitude).toString()));
+            dataToSend.add(new BasicNameValuePair("longitude", Double.valueOf(userLocation.longitude).toString()));
+
+            HttpParams httpParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpParams, CONNECTION_TIMEOUT);
+
+            HttpClient httpClient = new DefaultHttpClient(httpParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "StoreUserLocation.php");
+
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
                 httpClient.execute(post);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -348,8 +497,9 @@ public class ServerRequest {
         @Override
         protected void onPostExecute(Void aVoid){
             progressDialog.dismiss();
-            userCallback.done(null);
+            userCallback.done(userLocation);
             super.onPostExecute(aVoid);
         }
     }
+
 }

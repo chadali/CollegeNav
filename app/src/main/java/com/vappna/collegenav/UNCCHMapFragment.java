@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -469,5 +470,14 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    public LatLng getUserLocation(){
+        Log.d("Location: ", new LatLng(uncchMap.getMyLocation().getLatitude(), uncchMap.getMyLocation().getLongitude()).toString());
+        return new LatLng(uncchMap.getMyLocation().getLatitude(), uncchMap.getMyLocation().getLongitude());
+    }
+
+    public void addMarkers(Friend friend, LatLng latLng){
+        uncchMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.friend))).setTitle(friend.getUsername());
     }
 }

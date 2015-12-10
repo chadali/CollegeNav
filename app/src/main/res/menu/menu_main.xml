@@ -8,10 +8,10 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
-        android:id="@+id/favorite"
+        android:id="@+id/send_location"
         android:orderInCategory="100"
-        android:title="Favorite Colleges"
-        android:icon="@drawable/star"
+        android:title="Send Location"
+        android:icon="@drawable/account_location"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_search"

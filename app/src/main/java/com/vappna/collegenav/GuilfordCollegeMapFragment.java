@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /*A fragment that launches other parts of the demo application.
 */
@@ -493,6 +495,19 @@ public class GuilfordCollegeMapFragment extends Fragment implements LocationList
 
     @Override
     public void onProviderDisabled(String provider) {
+
+    }
+
+    public LatLng getUserLocation(){
+        Log.d("Location: ", new LatLng(guilfordMap.getMyLocation().getLatitude(), guilfordMap.getMyLocation().getLongitude()).toString());
+        return new LatLng(guilfordMap.getMyLocation().getLatitude(), guilfordMap.getMyLocation().getLongitude());
+    }
+
+    public void addMarkers(Friend friend, LatLng latLng){
+        Marker marker = guilfordMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.friend))
+                        .title(friend.getUsername()));
 
     }
 }

@@ -3,6 +3,7 @@ package com.vappna.collegenav;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by vnair on 11/14/2015.
