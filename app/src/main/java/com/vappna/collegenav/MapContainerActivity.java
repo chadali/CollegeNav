@@ -30,7 +30,6 @@ public class MapContainerActivity extends ActionBarActivity {
 
     HorizontalScrollView buttonLayout;
     Toolbar toolbar;
-
     Bundle infoBundle;
 
     String collegeID;
@@ -142,11 +141,21 @@ public class MapContainerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isAcademicMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityFalse("academicMarker");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityFalse("academicMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityFalse("academicMarker");
+                    }
                     setButtonAlpha(academicIcon, academicIconText, 0.4f);
                     isAcademicMarkerVisible = false;
                 } else if (!isAcademicMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityTrue("academicMarker");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityTrue("academicMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityTrue("academicMarker");
+                    }
                     setButtonAlpha(academicIcon, academicIconText, 1.0f);
                     isAcademicMarkerVisible = true;
                 }
@@ -158,11 +167,21 @@ public class MapContainerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isResidenceMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityFalse("residenceMarker");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityFalse("residenceMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityFalse("residenceMarker");
+                    }
                     setButtonAlpha(residenceIcon, residenceIconText, 0.4f);
                     isResidenceMarkerVisible = false;
                 } else if (!isResidenceMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityTrue("residenceMarker");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityTrue("residenceMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityTrue("residenceMarker");
+                    }
                     setButtonAlpha(residenceIcon, residenceIconText, 1.0f);
                     isResidenceMarkerVisible = true;
                 }
@@ -174,15 +193,22 @@ public class MapContainerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isAthleticMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityFalse("athleticMarker");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityFalse("athleticMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityFalse("athleticMarker");
+                    }
                     setButtonAlpha(athleticIcon, athleticIconText, 0.4f);
-                    Log.d("test", "Turned markers off");
                     isAthleticMarkerVisible = false;
                 } else if (!isAthleticMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityTrue("athleticMarker");
-                    Log.d("test","Turn button on");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityTrue("athleticMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityTrue("athleticMarker");
+                    }
                     setButtonAlpha(athleticIcon, athleticIconText, 1.0f);
-                    Log.d("test", "Turn marker on");
                     isAthleticMarkerVisible = true;
                 }
             }
@@ -193,15 +219,22 @@ public class MapContainerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isDiningMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityFalse("diningMarker");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityFalse("diningMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityFalse("diningMarker");
+                    }
                     setButtonAlpha(diningIcon, diningIconText, 0.4f);
-                    Log.d("test","Turned markers off");
                     isDiningMarkerVisible = false;
                 } else if (!isDiningMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityTrue("diningMarker");
-                    Log.d("test","Turn button on");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityTrue("diningMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityTrue("diningMarker");
+                    }
                     setButtonAlpha(diningIcon, diningIconText, 1.0f);
-                    Log.d("test","Turn marker on");
                     isDiningMarkerVisible = true;
                 }
             }
@@ -212,15 +245,23 @@ public class MapContainerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isHealthMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityFalse("healthMarker");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityFalse("healthMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityFalse("healthMarker");
+                    }
                     setButtonAlpha(healthIcon, healthIconText, 0.4f);
                     Log.d("test","Turned markers off");
                     isHealthMarkerVisible = false;
                 } else if (!isHealthMarkerVisible) {
-                    gcMapFragment.setMarkerVisibilityTrue("healthMarker");
-                    Log.d("test","Turn button on");
+                    if(collegeID.equals(Strings.getGUICOL())) {
+                        gcMapFragment.setMarkerVisibilityTrue("healthMarker");
+                    }
+                    if(collegeID.equals(Strings.getUNCCH())) {
+                        uncchMapFragment.setMarkerVisibilityTrue("healthMarker");
+                    }
                     setButtonAlpha(healthIcon, healthIconText, 1.0f);
-                    Log.d("test","Turn marker on");
                     isHealthMarkerVisible = true;
                 }
             }

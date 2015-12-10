@@ -238,11 +238,11 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
     private void setUpMap() {
         uncchMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         uncchMap.setPadding(0, 0, 0, 64);
-        uncchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(36.093422, -79.887920), 17.0f));
+        uncchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(35.906292, -79.047836), 17.0f));
         int collegeBackgroundColor = Color.argb(40, 128, 0, 0);
         int polygonStrokeColor = Color.BLACK;
         Polygon uncchCollege = uncchMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(36.089202, -79.884470), new LatLng(36.089881, -79.888889), new LatLng(36.092057, -79.889801), new LatLng(36.094724, -79.891402), new LatLng(36.098666, -79.891767), new LatLng(36.098341, -79.881383), new LatLng(36.092699, -79.881681), new LatLng(36.089202, -79.884470))
+                .add(new LatLng(35.916119, -79.047979), new LatLng(35.912868, -79.055642), new LatLng(35.905219, -79.066615), new LatLng(35.896578, -79.047422), new LatLng(35.896900, -79.034929), new LatLng(35.911342, -79.040475), new LatLng(35.916119, -79.047979))
                 .strokeColor(polygonStrokeColor)
                 .strokeWidth(5)
                 .fillColor(collegeBackgroundColor));
@@ -447,7 +447,7 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
 
     public void setMapTarget(String markerName) {
         LatLng markerPosition = uncchAcademicLatLng.get(uncchAcademicTitles.indexOf(markerName));
-        uncchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerPosition, 18.0f));
+        uncchMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerPosition, 15.0f));
         uncchAcademicMarkerArray.get(uncchAcademicTitles.indexOf(markerName)).showInfoWindow();
     }
 
