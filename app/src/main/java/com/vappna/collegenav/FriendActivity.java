@@ -50,6 +50,14 @@ public class FriendActivity extends AppCompatActivity {
         noFriendIV = (ImageView) findViewById(R.id.sad_face);
         allUsersLV = (ListView) findViewById(R.id.all_users_listview);
 
+        FloatingActionButton addFriend = (FloatingActionButton) findViewById(R.id.addfriend);
+        addFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(cxt, FindFriendActivity.class));
+            }
+        });
+
         Log.d("Friends",new LocalUser(cxt).getLoggedInUser().getFriends().toString());
 
         ServerRequest request = new ServerRequest(cxt);
