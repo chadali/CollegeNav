@@ -23,6 +23,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
+
 public class MapContainerActivity extends ActionBarActivity {
 
     Colors colors;
@@ -30,6 +35,7 @@ public class MapContainerActivity extends ActionBarActivity {
 
     HorizontalScrollView buttonLayout;
     Toolbar toolbar;
+
     Bundle infoBundle;
 
     String collegeID;
@@ -43,9 +49,11 @@ public class MapContainerActivity extends ActionBarActivity {
     LinearLayout academicIconLayout, residenceIconLayout, athleticIconLayout, diningIconLayout, healthIconLayout;
     ImageView academicIcon, residenceIcon, athleticIcon, diningIcon, healthIcon;
     TextView academicIconText, residenceIconText, athleticIconText, diningIconText, healthIconText;
-    boolean isAcademicMarkerVisible, isResidenceMarkerVisible, isAthleticMarkerVisible, isDiningMarkerVisible, isHealthMarkerVisible;
+    boolean isAcademicMarkerVisible, isResidenceMarkerVisible, isAthleticMarkerVisible;
 
     NavigationDrawerFragment drawerFragment;
+
+    LatLng usersLocation, friendLocation;
 
 
     @Override
@@ -60,9 +68,73 @@ public class MapContainerActivity extends ActionBarActivity {
         setUpPage(collegeID);
         setSupportActionBar(toolbar);
         setUpNavigationDrawer();
+
+        ServerRequest request = new ServerRequest(MapContainerActivity.this);
+        request.getUserFriendsInBackground(new LocalUser(MapContainerActivity.this).getLoggedInUser(), new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+
+            }
+
+            @Override
+            public void done(LatLng userLocation) {
+
+            }
+
+            @Override
+            public void doneRetrievingArray(final ArrayList<String> returnedArray) {
+
+                if (gcMapFragment != null) {
+                    for (int i = 0; i < returnedArray.size(); i++) {
+                        Friend friend = new Friend(returnedArray.get(i));
+                        final int x = i;
+                        new ServerRequest(MapContainerActivity.this).getUserLocationInBackground(friend, new GetUserCallback() {
+                            @Override
+                            public void done(User returnedUser) {
+
+                            }
+
+                            @Override
+                            public void done(LatLng userLocation) {
+                                gcMapFragment.addMarkers(new Friend(returnedArray.get(x)), userLocation);
+                            }
+
+                            @Override
+                            public void doneRetrievingArray(ArrayList<String> returnedArray) {
+
+                            }
+                        });
+                    }
+                } else if (uncchMapFragment != null) {
+                    for (int i = 0; i < returnedArray.size(); i++) {
+                        Friend friend = new Friend(returnedArray.get(i));
+                        final int x = i;
+                        new ServerRequest(MapContainerActivity.this).getUserLocationInBackground(friend, new GetUserCallback() {
+                            @Override
+                            public void done(User returnedUser) {
+
+                            }
+
+                            @Override
+                            public void done(LatLng userLocation) {
+                                if(userLocation != null) {
+                                    uncchMapFragment.addMarkers(new Friend(returnedArray.get(x)), userLocation);
+                                }
+                            }
+
+                            @Override
+                            public void doneRetrievingArray(ArrayList<String> returnedArray) {
+
+                            }
+                        });
+                    }
+                }
+            }
+        });
     }
+
     @Override
-    public void onNewIntent(Intent intent){
+    public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         // getIntent() should always return the most recent
         setIntent(intent);
@@ -73,7 +145,7 @@ public class MapContainerActivity extends ActionBarActivity {
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
     }
 
-    public void showDirectionsDialog(){
+    public void showDirectionsDialog() {
         Dialog dialog = new Dialog(MapContainerActivity.this);
         dialog.setContentView(R.layout.directions_dialog_layout);
         dialog.setTitle("Directions: ");
@@ -96,6 +168,7 @@ public class MapContainerActivity extends ActionBarActivity {
         });
         dialog.show();
     }
+
     private void setUpPage(String collegeID) {
         if (collegeID.equals(strings.getGUICOL())) {
             gcMapFragment = new GuilfordCollegeMapFragment();
@@ -141,21 +214,11 @@ public class MapContainerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isAcademicMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityFalse("academicMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityFalse("academicMarker");
-                    }
+                    gcMapFragment.setMarkerVisibilityFalse("academicMarker");
                     setButtonAlpha(academicIcon, academicIconText, 0.4f);
                     isAcademicMarkerVisible = false;
                 } else if (!isAcademicMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityTrue("academicMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityTrue("academicMarker");
-                    }
+                    gcMapFragment.setMarkerVisibilityTrue("academicMarker");
                     setButtonAlpha(academicIcon, academicIconText, 1.0f);
                     isAcademicMarkerVisible = true;
                 }
@@ -167,21 +230,11 @@ public class MapContainerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isResidenceMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityFalse("residenceMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityFalse("residenceMarker");
-                    }
+                    gcMapFragment.setMarkerVisibilityFalse("residenceMarker");
                     setButtonAlpha(residenceIcon, residenceIconText, 0.4f);
                     isResidenceMarkerVisible = false;
                 } else if (!isResidenceMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityTrue("residenceMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityTrue("residenceMarker");
-                    }
+                    gcMapFragment.setMarkerVisibilityTrue("residenceMarker");
                     setButtonAlpha(residenceIcon, residenceIconText, 1.0f);
                     isResidenceMarkerVisible = true;
                 }
@@ -193,80 +246,19 @@ public class MapContainerActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (isAthleticMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityFalse("athleticMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityFalse("athleticMarker");
-                    }
+                    gcMapFragment.setMarkerVisibilityFalse("athleticMarker");
                     setButtonAlpha(athleticIcon, athleticIconText, 0.4f);
+                    Log.d("test", "Turned markers off");
                     isAthleticMarkerVisible = false;
                 } else if (!isAthleticMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityTrue("athleticMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityTrue("athleticMarker");
-                    }
+                    gcMapFragment.setMarkerVisibilityTrue("athleticMarker");
+                    Log.d("test", "Turn button on");
                     setButtonAlpha(athleticIcon, athleticIconText, 1.0f);
+                    Log.d("test", "Turn marker on");
                     isAthleticMarkerVisible = true;
                 }
             }
         });
-
-        isDiningMarkerVisible = true;
-        diningIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isDiningMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityFalse("diningMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityFalse("diningMarker");
-                    }
-                    setButtonAlpha(diningIcon, diningIconText, 0.4f);
-                    isDiningMarkerVisible = false;
-                } else if (!isDiningMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityTrue("diningMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityTrue("diningMarker");
-                    }
-                    setButtonAlpha(diningIcon, diningIconText, 1.0f);
-                    isDiningMarkerVisible = true;
-                }
-            }
-        });
-
-        isHealthMarkerVisible = true;
-        healthIconLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isHealthMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityFalse("healthMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityFalse("healthMarker");
-                    }
-                    setButtonAlpha(healthIcon, healthIconText, 0.4f);
-                    Log.d("test","Turned markers off");
-                    isHealthMarkerVisible = false;
-                } else if (!isHealthMarkerVisible) {
-                    if(collegeID.equals(Strings.getGUICOL())) {
-                        gcMapFragment.setMarkerVisibilityTrue("healthMarker");
-                    }
-                    if(collegeID.equals(Strings.getUNCCH())) {
-                        uncchMapFragment.setMarkerVisibilityTrue("healthMarker");
-                    }
-                    setButtonAlpha(healthIcon, healthIconText, 1.0f);
-                    isHealthMarkerVisible = true;
-                }
-            }
-        });
-
 
     }
 
@@ -320,16 +312,40 @@ public class MapContainerActivity extends ActionBarActivity {
             return true;
         }
 
-        if(id == R.id.action_search){
+        if (id == R.id.action_search) {
             Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.favorite) {
-            return true;
-        }
+        if (id == R.id.send_location) {
+            if (collegeID.equals(Strings.getGUICOL())) {
+                usersLocation = gcMapFragment.getUserLocation();
+            }
+            if (collegeID.equals(Strings.getUNCCH())) {
+                usersLocation = uncchMapFragment.getUserLocation();
+            }
+            ServerRequest serverRequest = new ServerRequest(MapContainerActivity.this);
+            serverRequest.storeUserLocationInBackground(new LocalUser(getApplicationContext()).getLoggedInUser(), usersLocation, new GetUserCallback() {
+                @Override
+                public void done(User returnedUser) {
 
+                }
+                @Override
+                public void done(LatLng userLocation) {
+
+                }
+
+                @Override
+                public void doneRetrievingArray(ArrayList<String> returnedArray) {
+
+                }
+            });
+
+
+        }
         return super.onOptionsItemSelected(item);
+
     }
+
     @Override
     protected void onResume() {
         super.onResume();
