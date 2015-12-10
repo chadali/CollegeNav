@@ -318,10 +318,10 @@ public class ServerRequest {
         }
 
         @Override
-        protected void onPostExecute(ArrayList<String> friends){
+        protected void onPostExecute(ArrayList<String> friend){
             progressDialog.dismiss();
-            userCallback.doneRetrievingArray(friends);
-            super.onPostExecute(friends);
+            userCallback.doneRetrievingArray(friend);
+            super.onPostExecute(friend);
         }
     }
 

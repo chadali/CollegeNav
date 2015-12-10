@@ -477,7 +477,7 @@ public class UNCCHMapFragment extends Fragment implements LocationListener {
         return new LatLng(uncchMap.getMyLocation().getLatitude(), uncchMap.getMyLocation().getLongitude());
     }
 
-    public void addMarkers(Friend friend, LatLng latLng){
-        uncchMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.friend))).setTitle(friend.getUsername());
+    public void addMarkers(Friend friends, LatLng latLng){
+        uncchMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.drawable.friend))).setTitle(friends.getUsername());
     }
 }
